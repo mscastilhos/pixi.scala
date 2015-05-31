@@ -15,9 +15,9 @@ object ContainerDemo {
   document.body.appendChild(renderer.view)
 
   // create the root of the scene graph
-  var stage = new Container()
+  val stage = new Container()
 
-  var container = new Container()
+  val container = new Container()
 
   stage.addChild(container)
 

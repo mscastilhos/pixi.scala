@@ -15,9 +15,9 @@ object Click {
   document.body.appendChild(renderer.view)
 
   // create the root of the scene graph
-  var stage = new Container()
+  val stage = new Container()
 
-  var sprite = Sprite.fromImage("_assets/basics/bunny.png")
+  val sprite = Sprite.fromImage("_assets/basics/bunny.png")
 
   sprite.position.set(230, 264)
   sprite.interactive = true

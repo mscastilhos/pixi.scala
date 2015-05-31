@@ -9,20 +9,20 @@ import scala.scalajs.js.annotation.JSExport
 
 @JSExport("TilingSpriteDemo")
 object TilingSpriteDemo {
-  var renderer = Renderer.autoDetect(800, 600)
+  val renderer = Renderer.autoDetect(800, 600)
   document.body.appendChild(renderer.view)
 
   // create the root of the scene graph
-  var stage = new Container()
+  val stage = new Container()
 
   // create a texture from an image path
-  var texture = Texture.fromImage("_assets/p2.jpeg")
+  val texture = Texture.fromImage("_assets/p2.jpeg")
 
   /* create a tiling sprite ...
    * requires a texture, a width and a height
    * in WebGL the image size should preferably be a power of two
    */
-  var tilingSprite = new TilingSprite(texture, renderer.width, renderer.height)
+  val tilingSprite = new TilingSprite(texture, renderer.width, renderer.height)
   stage.addChild(tilingSprite)
 
   var count: Double = 0

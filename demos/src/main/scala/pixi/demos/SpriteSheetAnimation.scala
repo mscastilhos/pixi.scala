@@ -12,11 +12,11 @@ import scala.scalajs.js.annotation.JSExport
  */
 @JSExport("SpriteSheetAnimation")
 object SpriteSheetAnimation {
-  var renderer = Renderer.autoDetect(800, 600);
+  val renderer = Renderer.autoDetect(800, 600);
   document.body.appendChild(renderer.view);
 
   // create the root of the scene graph
-  var stage = new Container()
+  val stage = new Container()
 
   pixi.loader.add("_assets/basics/fighter.json")
     .load(onAssetsLoaded _)
