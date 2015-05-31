@@ -1,6 +1,7 @@
 package pixi.core
 
 import org.scalajs.dom.raw.HTMLVideoElement
+import pixi.Env
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
@@ -35,15 +36,17 @@ class VideoBaseTexture(source: HTMLVideoElement, scaleMode: Int) extends BaseTex
   var autoUpdate: Boolean = js.native
 }
 
-object VideoBaseTexture extends js.GlobalScope {
+object VideoBaseTexture {
   /** Mimic Pixi BaseTexture.from.... method.
     *
     * @param video
     * @param scaleMode See { @link SCALE_MODES} for possible values
     * @return
     */
-  @JSName("PIXI.VideoBaseTexture.fromVideo")
-  def fromVideo(video: HTMLVideoElement, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): VideoBaseTexture = js.native
+  @inline
+  def fromVideo(video: HTMLVideoElement, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): VideoBaseTexture = {
+    Env.PIXI.VideoBaseTexture.fromVideo(video, scaleMode).asInstanceOf[VideoBaseTexture]
+  }
 
   /** Helper function that creates a new BaseTexture based on the given video element.
     * This BaseTexture can then be used to create a texture
@@ -52,6 +55,8 @@ object VideoBaseTexture extends js.GlobalScope {
     * @param scaleMode See { @link SCALE_MODES} for possible values
     * @return
     */
-  @JSName("PIXI.VideoBaseTexture.fromUrl")
-  def fromUrl(videoSrc: js.Any, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): VideoBaseTexture = js.native
+  @inline
+  def fromUrl(videoSrc: js.Any, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): VideoBaseTexture = {
+    Env.PIXI.VideoBaseTexture.fromUrl(videoSrc, scaleMode).asInstanceOf[VideoBaseTexture]
+  }
 }

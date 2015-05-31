@@ -133,7 +133,7 @@ class DisplayObject() extends /*EventEmitter*/ js.Object {
   for possible values
     * @return a texture of the display object
     */
-  def generateTexture(renderer: SystemRenderer, resolution: Double, scaleMode: Double): Texture = js.native
+  def generateTexture(renderer: Renderer, resolution: Double, scaleMode: Double): Texture = js.native
 
   /** Base destroy method for generic display objects */
   def destroy(): Unit = js.native

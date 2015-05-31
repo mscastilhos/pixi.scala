@@ -1,5 +1,6 @@
 package pixi.core
 
+import pixi.Env
 import pixi.core.webgl.filters.AbstractFilter
 
 import scala.scalajs.js
@@ -53,15 +54,17 @@ Setting the anchor to 1,1 would mean the texture's origin point will be the bott
   def destroy(destroyTexture: Boolean, destroyBaseTexture: Boolean): Unit = js.native
 }
 
-object Sprite extends js.GlobalScope {
+object Sprite {
   /** Helper function that creates a sprite that will contain a texture from the TextureCache based on the frameId
     * The frame ids are created when a Texture packer file has been loaded
     *
     * @param frameId The frame Id of the texture in the cache
     * @return A new Sprite using a texture from the texture cache matching the frameId
     */
-  @JSName("PIXI.Sprite.fromFrame")
-  def fromFrame(frameId: String): Sprite = js.native
+  @inline
+  def fromFrame(frameId: String): Sprite = {
+    Env.PIXI.Sprite.fromFrame(frameId).asInstanceOf[Sprite]
+  }
 
   /** Helper function that creates a sprite that will contain a texture based on an image url
     * If the image is not in the texture cache it will be loaded
@@ -69,6 +72,8 @@ object Sprite extends js.GlobalScope {
     * @param imageId The image url of the texture
     * @return A new Sprite using a texture from the texture cache matching the image id
     */
-  @JSName("PIXI.Sprite.fromImage")
-  def fromImage(imageId: String): Sprite = js.native
+  @inline
+  def fromImage(imageId: String): Sprite = {
+    Env.PIXI.Sprite.fromImage(imageId).asInstanceOf[Sprite]
+  }
 }

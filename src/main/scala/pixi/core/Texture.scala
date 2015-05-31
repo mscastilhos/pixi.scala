@@ -2,6 +2,7 @@ package pixi.core
 
 import org.scalajs.dom.html.Canvas
 import org.scalajs.dom.raw.HTMLVideoElement
+import pixi.Env
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
@@ -54,7 +55,18 @@ irrespective of the actual frame size or placement (which can be influenced by t
   def destroy(destroyBase: Boolean): Unit = js.native
 }
 
-object Texture extends js.GlobalScope {
+object Texture {
+  /** Helper function that creates a Texture object from the given image url.
+    * If the image is not in the texture cache it will be  created and loaded.
+    *
+    * @param imageUrl The image url of the texture
+    * @return The newly created texture
+    */
+  @inline
+  def fromImage(imageUrl: String): Texture = {
+    Env.PIXI.Texture.fromImage(imageUrl).asInstanceOf[Texture]
+  }
+
   /** Helper function that creates a Texture object from the given image url.
     * If the image is not in the texture cache it will be  created and loaded.
     *
@@ -63,8 +75,10 @@ object Texture extends js.GlobalScope {
     * @param scaleMode See {{#crossLink "PIXI/scaleModes:property"}}scaleModes{{/crossLink}} for possible values
     * @return The newly created texture
     */
-  @JSName("PIXI.Texture.fromImage")
-  def fromImage(imageUrl: String, crossorigin: Boolean, scaleMode: Int): Texture = js.native
+  @inline
+  def fromImage(imageUrl: String, crossorigin: Boolean, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): Texture = {
+    Env.PIXI.Texture.fromImage(imageUrl, crossorigin, scaleMode).asInstanceOf[Texture]
+  }
 
   /** Helper function that creates a sprite that will contain a texture from the TextureCache based on the frameId
     * The frame ids are created when a Texture packer file has been loaded
@@ -72,8 +86,10 @@ object Texture extends js.GlobalScope {
     * @param frameId The frame Id of the texture in the cache
     * @return The newly created texture
     */
-  @JSName("PIXI.Texture.fromFrame")
-  def fromFrame(frameId: String): Texture = js.native
+  @inline
+  def fromFrame(frameId: String): Texture = {
+    Env.PIXI.Texture.fromFrame(frameId).asInstanceOf[Texture]
+  }
 
   /** Helper function that creates a new Texture based on the given canvas element.
     *
@@ -81,8 +97,10 @@ object Texture extends js.GlobalScope {
     * @param scaleMode See {{#crossLink "PIXI/scaleModes:property"}}scaleModes{{/crossLink}} for possible values
     * @return
     */
-  @JSName("PIXI.Texture.fromCanvas")
-  def fromCanvas(canvas: Canvas, scaleMode: Double): Texture = js.native
+  @inline
+  def fromCanvas(canvas: Canvas, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): Texture = {
+    Env.PIXI.Texture.fromCanvas(canvas, scaleMode).asInstanceOf[Texture]
+  }
 
   /** Helper function that creates a new Texture based on the given video element.
     *
@@ -90,8 +108,10 @@ object Texture extends js.GlobalScope {
     * @param scaleMode See {{#crossLink "PIXI/scaleModes:property"}}scaleModes{{/crossLink}} for possible values
     * @return A Texture
     */
-  @JSName("PIXI.Texture.fromVideo")
-  def fromVideo(video: HTMLVideoElement, scaleMode: Double): Texture = js.native
+  @inline
+  def fromVideo(video: HTMLVideoElement, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): Texture = {
+    Env.PIXI.Texture.fromVideo(video, scaleMode).asInstanceOf[Texture]
+  }
 
   /** Helper function that creates a new Texture based on the video url.
     *
@@ -99,22 +119,28 @@ object Texture extends js.GlobalScope {
     * @param scaleMode See {{ @link SCALE_MODES}} for possible values
     * @return A Texture
     */
-  @JSName("PIXI.Texture.fromVideoUrl")
-  def fromVideoUrl(videoUrl: String, scaleMode: Double): Texture = js.native
+  @inline
+  def fromVideoUrl(videoUrl: String, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): Texture = {
+    Env.PIXI.Texture.fromVideoUrl(videoUrl, scaleMode).asInstanceOf[Texture]
+  }
 
   /** Adds a texture to the global utils.TextureCache. This cache is shared across the whole PIXI object.
     *
     * @param texture The Texture to add to the cache.
     * @param id The id that the texture will be stored against.
     */
-  @JSName("PIXI.Texture.addTextureToCache")
-  def addTextureToCache(texture: Texture, id: String): Unit = js.native
+  @inline
+  def addTextureToCache(texture: Texture, id: String): Unit = {
+    Env.PIXI.Texture.addTextureToCache(texture, id)
+  }
 
   /** Remove a texture from the global utils.TextureCache.
     *
     * @param id The id of the texture to be removed
     * @return The texture that was removed
     */
-  @JSName("PIXI.Texture.removeTextureFromCache")
-  def removeTextureFromCache(id: String): Texture = js.native
+  @inline
+  def removeTextureFromCache(id: String): Texture = {
+    Env.PIXI.Texture.removeTextureFromCache(id).asInstanceOf[Texture]
+  }
 }

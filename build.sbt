@@ -14,7 +14,8 @@ lazy val demos = project.in(file("demos")).
   settings(
     scalaVersion := "2.11.6",
     name := "Demos",
-    version := "0.0.1"
+    version := "0.0.1",
+    libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.8.0"
   )
 
 scalaJSStage in Global := FastOptStage

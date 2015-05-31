@@ -1,7 +1,8 @@
 package pixi.core.canvas
 
 import org.scalajs.dom.raw.CanvasRenderingContext2D
-import pixi.core.{SystemRenderer, DisplayObject}
+import pixi.core.Renderer.Options
+import pixi.core.Renderer
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
@@ -16,8 +17,7 @@ import scala.scalajs.js.annotation.JSName
 @JSName("PIXI.CanvasRenderer")
 class CanvasRenderer(width: Int = 800,
                      height: Int = 600,
-                     options: SystemRenderer.Options = SystemRenderer.options())
-  extends SystemRenderer("Canvas", width, height, options) {
+                     options: Options = Options.DEFAULT) extends Renderer {
 
   /** The canvas 2d context that everything is drawn with. */
   var context: CanvasRenderingContext2D = js.native
@@ -44,11 +44,6 @@ class CanvasRenderer(width: Int = 800,
   /** The canvas property used to set the canvas smoothing property. */
   var smoothProperty: String = js.native
 
-  /** Renders the object to this canvas view
-    *
-    * @param obj the object to be rendered
-    */
-  def render(obj: DisplayObject): Unit = js.native
 }
 
 

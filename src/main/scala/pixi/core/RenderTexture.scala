@@ -46,7 +46,7 @@ import scala.scalajs.js.typedarray.Uint8ClampedArray
   * @param _resolution The resolution of the texture being generated
   */
 @JSName("PIXI.RenderTexture")
-class RenderTexture(_renderer: SystemRenderer,
+class RenderTexture(_renderer: Renderer,
                     _width: Double = 100,
                     _height: Double = 100,
                     _scaleMode: Double = SCALE_MODES.DEFAULT,
@@ -73,7 +73,7 @@ class RenderTexture(_renderer: SystemRenderer,
   def render(displayObject: DisplayObject, matrix: Matrix = null, clear: Boolean = false, updateTransform: Boolean = true): Unit = js.native
 
   /** The renderer this RenderTexture uses. A RenderTexture can only belong to one renderer at the moment if its webGL. */
-  var renderer: SystemRenderer = js.native
+  var renderer: Renderer = js.native
 
   /** Resizes the RenderTexture.
     *

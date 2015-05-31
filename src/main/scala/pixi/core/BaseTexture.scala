@@ -2,6 +2,7 @@ package pixi.core
 
 import org.scalajs.dom.html.Canvas
 import org.scalajs.dom.raw.HTMLElement
+import pixi.Env
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
@@ -89,7 +90,7 @@ class BaseTexture(_source: HTMLElement,
   def updateSourceImage(newSrc: String): Unit = js.native
 }
 
-object BaseTexture extends js.GlobalScope {
+object BaseTexture {
   /**
    * Helper function that creates a base texture from the given image url.
    * If the image is not in the base texture cache it will be created and loaded.
@@ -99,8 +100,10 @@ object BaseTexture extends js.GlobalScope {
    * @param scaleMode See { @link SCALE_MODES} for possible values
    * @return BaseTexture
    */
-  @JSName("PIXI.BaseTexture.fromImage")
-  def fromImage(imageUrl: String, crossorigin: Boolean, scaleMode: Int): BaseTexture = js.native
+  @inline
+  def fromImage(imageUrl: String, crossorigin: Boolean, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): BaseTexture = {
+    Env.PIXI.BaseTexture.fromImage(imageUrl, crossorigin, scaleMode).asInstanceOf[BaseTexture]
+  }
 
   /**
    * Helper function that creates a base texture from the given image url.
@@ -109,8 +112,10 @@ object BaseTexture extends js.GlobalScope {
    * @param imageUrl The image url of the texture
    * @return BaseTexture
    */
-  @JSName("PIXI.BaseTexture.fromImage")
-  def fromImage(imageUrl: String): BaseTexture = js.native
+  @inline
+  def fromImage(imageUrl: String): BaseTexture = {
+    Env.PIXI.BaseTexture.fromImage(imageUrl).asInstanceOf[BaseTexture]
+  }
 
   /**
    * Helper function that creates a base texture from the given canvas element.
@@ -119,8 +124,10 @@ object BaseTexture extends js.GlobalScope {
    * @param scaleMode See {{#crossLink "PIXI/scaleModes:property"}}scaleModes{{/crossLink}} for possible values
    * @return BaseTexture
    */
-  @JSName("PIXI.BaseTexture.fromCanvas")
-  def fromCanvas(canvas: Canvas, scaleMode: Int): BaseTexture = js.native
+  @inline
+  def fromCanvas(canvas: Canvas, scaleMode: Int): BaseTexture = {
+    Env.PIXI.BaseTexture.fromCanvas(canvas, scaleMode).asInstanceOf[BaseTexture]
+  }
 }
 
 
