@@ -12,8 +12,8 @@ import scala.scalajs.js.annotation.JSExport
  */
 @JSExport("SpriteSheetAnimation")
 object SpriteSheetAnimation {
-  val renderer = Renderer.autoDetect(800, 600);
-  document.body.appendChild(renderer.view);
+  val renderer = Renderer.autoDetect(800, 600)
+  document.body.appendChild(renderer.view)
 
   // create the root of the scene graph
   val stage = new Container()
