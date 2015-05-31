@@ -167,10 +167,10 @@ object Renderer {
    * @return  Returns WebGL renderer if available, otherwise CanvasRenderer
    */
   @inline
-  def autoDetectRenderer(width: Int = 800,
-                         height: Int = 600,
-                         options: Options = Options.DEFAULT,
-                         noWebGL: Boolean = false): Renderer = {
+  def autoDetect(width: Int = 800,
+                 height: Int = 600,
+                 options: Options = Options.DEFAULT,
+                 noWebGL: Boolean = false): Renderer = {
     Env.PIXI.autoDetectRenderer(width, height, options, noWebGL).asInstanceOf[Renderer]
   }
 

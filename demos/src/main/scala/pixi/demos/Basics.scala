@@ -11,7 +11,7 @@ import scala.scalajs.js.annotation.JSExport
   */
 @JSExport("Basics")
 object Basics {
-  val renderer = Renderer.autoDetectRenderer(800, 600, Options(backgroundColor = 0x1099bb))
+  val renderer = Renderer.autoDetect(800, 600, Options(backgroundColor = 0x1099bb))
   document.body.appendChild(renderer.view)
 
   // create the root of the scene graph
