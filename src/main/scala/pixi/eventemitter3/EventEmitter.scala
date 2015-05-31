@@ -85,7 +85,7 @@ object EventEmitter {
       val fn: js.Function0[A] = () => cmd
 
       for (e <- events) {
-        ee.on(e, () => cmd)
+        ee.on(e, () => fn)
       }
     }
 
@@ -99,7 +99,7 @@ object EventEmitter {
       val fn: js.Function0[A] = () => cmd
 
       for (e <- events) {
-        ee.once(e, () => cmd)
+        ee.once(e, () => fn)
       }
     }
   }
