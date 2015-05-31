@@ -3,6 +3,8 @@ package pixi.core
 import pixi.core.canvas.CanvasRenderer
 import pixi.core.webgl.WebGLRenderer
 import pixi.core.webgl.filters.AbstractFilter
+import pixi.eventemitter3.EventEmitter
+import pixi.interaction.InteractiveTarget
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
@@ -14,7 +16,7 @@ import scala.scalajs.js.annotation.JSName
   * @constructor
   */
 @JSName("PIXI.DisplayObject")
-class DisplayObject() extends /*EventEmitter*/ js.Object {
+class DisplayObject() extends EventEmitter with InteractiveTarget {
   /** The coordinate of the object relative to the local coordinates of the parent. */
   var position: Point = js.native
 

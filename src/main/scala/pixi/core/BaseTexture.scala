@@ -3,6 +3,7 @@ package pixi.core
 import org.scalajs.dom.html.Canvas
 import org.scalajs.dom.raw.HTMLElement
 import pixi.Env
+import pixi.eventemitter3.EventEmitter
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
@@ -16,7 +17,7 @@ import scala.scalajs.js.annotation.JSName
 @JSName("PIXI.BaseTexture")
 class BaseTexture(_source: HTMLElement,
                   _scaleMode: Int = Consts.SCALE_MODES.DEFAULT,
-                  _resolution: Double = 1) extends js.Object {
+                  _resolution: Double = 1) extends EventEmitter {
   /** The Resolution of the texture. */
   var resolution: Double = js.native
 

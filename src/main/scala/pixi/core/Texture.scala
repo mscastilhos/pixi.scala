@@ -3,6 +3,7 @@ package pixi.core
 import org.scalajs.dom.html.Canvas
 import org.scalajs.dom.raw.HTMLVideoElement
 import pixi.Env
+import pixi.eventemitter3.EventEmitter
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
@@ -19,7 +20,7 @@ import scala.scalajs.js.annotation.JSName
   * }}}
   */
 @JSName("PIXI.Texture")
-trait Texture extends js.Object {
+trait Texture extends EventEmitter {
   /** Does this Texture have any frame data assigned to it? */
   var noFrame: Boolean = js.native
 

@@ -30,8 +30,6 @@ import scala.scalajs.js.annotation.JSName
 class ParticleContainer(size: Double = 15000,
                         properties: Properties = ParticleContainer.DEFAULT) extends Container {
 
-  var interactiveChildren: Boolean = js.native
-
   /** The blend mode to be applied to the sprite. Apply a value of blendModes.NORMAL to reset the blend mode. */
   var blendMode: Double = js.native
 

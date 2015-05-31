@@ -2,6 +2,7 @@ package pixi.core
 
 import org.scalajs.dom.raw.HTMLCanvasElement
 import pixi.Env
+import pixi.eventemitter3.EventEmitter
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
@@ -11,7 +12,7 @@ import scala.scalajs.js.annotation.JSName
   * @constructor
   */
 @JSName("PIXI.SystemRenderer")
-trait Renderer extends js.Object {
+trait Renderer extends EventEmitter {
 
   /** The type of this renderer as a standardised const */
   var `type`: Int = js.native
