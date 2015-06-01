@@ -21,7 +21,7 @@ trait EventEmitter extends js.Object {
     * @param event Name of the event.
     * @param fn Callback function.
     */
-  def on(event: String, fn: js.Function0[_]): Unit = js.native
+  def on(event: String, fn: js.Function): Unit = js.native
 
   /** Register a new EventListener for the given event.
     *
@@ -36,7 +36,7 @@ trait EventEmitter extends js.Object {
     * @param event Name of the event.
     * @param fn Callback function.
     */
-  def once(event: String, fn: js.Function0[_]): Unit = js.native
+  def once(event: String, fn: js.Function): Unit = js.native
 
   /** Add an EventListener that's only called once.
     *

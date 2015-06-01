@@ -1,4 +1,6 @@
-package pixi
+package pixi.loaders
+
+import pixi.eventemitter3.EventEmitter
 
 import scala.scalajs.js
 
@@ -13,7 +15,7 @@ import scala.scalajs.js
  * - start Emitted when the loader begins to process the queue.
  * - complete Emitted when the queued resources all load.
  */
-trait Loader extends js.Object {
+trait Loader extends EventEmitter {
 
   /** The base url for all resources loaded by this loader. */
   var baseUrl: String = js.native
@@ -33,16 +35,47 @@ trait Loader extends js.Object {
   // TODO: Better add()
   /** Adds a resource to the loader queue.
     *
-    * @param name Name of the resource
+    * @param url Url of the resource
     * @return This loader
     */
-  def add(name: String): Loader = js.native
+  def add(url: String): Loader = js.native
+
+  /** Adds a resource to the loader queue.
+    *
+    * @param url Url of the resource. It's also used as the name
+    * @param callback A function called when the resource is loaded
+    * @return This loader
+    */
+  def add(url: String, callback: js.Function2[Loader, js.Dictionary[Resource], _]): Loader = js.native
+
+  /** Adds a resource to the loader queue.
+    *
+    * @param name The name of the resource to load
+    * @param url Url of the resource
+    * @return This loader
+    */
+  def add(name: String, url: String): Loader = js.native
+
+  /** Adds a resource to the loader queue.
+    *
+    * @param name The name of the resource to load
+    * @param url Url of the resource
+    * @param callback A function called when the resource is loaded
+    * @return This loader
+    */
+  def add(name: String, url: String, callback: js.Function2[Loader, js.Dictionary[Resource], _]): Loader = js.native
 
   /** Resets the queue of the loader to prepare for a new load.
     *
     * @return
     */
   def reset(): Loader = js.native
+
+  /** Starts loading the queued resources.
+    *
+    * @return
+    */
+  def load(): Loader = js.native
 
   /** Starts loading the queued resources.
     *

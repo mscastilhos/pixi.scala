@@ -1,3 +1,5 @@
+import pixi.loaders.Loader
+
 /**
  * @author Marcelo Serra Castilhos
  */
