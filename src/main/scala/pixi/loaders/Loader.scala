@@ -84,3 +84,17 @@ trait Loader extends EventEmitter {
     */
   def load(callback: js.Function0[_]): Loader = js.native
 }
+
+object Loader {
+
+  implicit class RichLoader(val loader: Loader) extends AnyVal {
+    /** Starts loading the queued resources.
+      *
+      * @param stmt Code to execute when the resources are loaded
+      * @return
+      */
+    @inline
+    def loadAnd(stmt: => Unit): Loader = loader.load(() => stmt)
+  }
+
+}
