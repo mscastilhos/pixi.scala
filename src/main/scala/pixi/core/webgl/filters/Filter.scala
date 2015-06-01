@@ -2,7 +2,7 @@ package pixi.core.webgl.filters
 
 import pixi.Env
 import pixi.core.webgl.WebGLRenderer
-import pixi.core.webgl.filters.AbstractFilter.Uniform
+import pixi.core.webgl.filters.Filter.Uniform
 import pixi.core.webgl.utils.RenderTarget
 
 import scala.scalajs.js
@@ -12,7 +12,7 @@ import scala.scalajs.js.annotation.{JSExportAll, JSName}
   * If you want to make a custom filter this should be your base class.
   */
 @JSName("PIXI.AbstractFilter")
-trait AbstractFilter extends js.Object {
+trait Filter extends js.Object {
 
   /** The extra padding that the filter might need */
   var padding: Double = js.native
@@ -43,7 +43,7 @@ trait AbstractFilter extends js.Object {
 
 // TODO: Allow defining filters in Scala
 
-object AbstractFilter {
+object Filter {
   /** Creates a filter
     * @param vertexSrc {string|string[]} The vertex shader source as an array of strings.
     * @param fragmentSrc {string|string[]} The fragment shader source as an array of strings.
@@ -51,18 +51,19 @@ object AbstractFilter {
     */
   def apply(vertexSrc: String = null,
             fragmentSrc: String = null,
-            uniforms: js.Dictionary[Uniform] = js.Dictionary()): AbstractFilter = {
-    js.Dynamic.newInstance(Env.PIXI.AbstractFilter)(vertexSrc, fragmentSrc, uniforms).asInstanceOf[AbstractFilter]
+            uniforms: js.Dictionary[Uniform] = js.Dictionary()): Filter = {
+    js.Dynamic.newInstance(Env.PIXI.AbstractFilter)(vertexSrc, fragmentSrc, uniforms).asInstanceOf[Filter]
   }
 
   @JSExportAll
   class Uniform(var `type`: String, var value: js.Any) {
 
+    @inline
     def get[T]: T = value.asInstanceOf[T]
 
+    @inline
     def set[T](value: T) = {
       this.value = value.asInstanceOf[js.Any]
     }
   }
-
 }

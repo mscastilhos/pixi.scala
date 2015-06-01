@@ -2,7 +2,7 @@ package pixi.core
 
 import pixi.core.canvas.CanvasRenderer
 import pixi.core.webgl.WebGLRenderer
-import pixi.core.webgl.filters.AbstractFilter
+import pixi.core.webgl.filters.Filter
 import pixi.eventemitter3.EventEmitter
 import pixi.interaction.InteractiveTarget
 
@@ -77,7 +77,7 @@ class DisplayObject() extends EventEmitter with InteractiveTarget {
     * IMPORTANT: This is a webGL only feature and will be ignored by the canvas renderer.
     * To remove filters simply set this property to 'null'
     */
-  var filters: js.Array[AbstractFilter] = js.native
+  var filters: js.Array[Filter] = js.native
 
   /** Retrieves the bounds of the displayObject as a rectangle object
     *

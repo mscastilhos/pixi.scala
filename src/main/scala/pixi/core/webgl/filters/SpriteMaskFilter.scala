@@ -10,7 +10,7 @@ import scala.scalajs.js.annotation.JSName
   * @param sprite the target sprite
   */
 @JSName("PIXI.SpriteMaskFilter")
-class SpriteMaskFilter(sprite: Sprite) extends AbstractFilter {
+class SpriteMaskFilter(sprite: Sprite) extends Filter {
   /** The texture used for the displacement map. Must be power of 2 sized texture. */
   var map: Texture = js.native
 

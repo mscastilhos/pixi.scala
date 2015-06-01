@@ -12,4 +12,4 @@ import scala.scalajs.js.annotation.JSName
   * @constructor
   */
 @JSName("PIXI.FXAAFilter")
-class FXAAFilter() extends AbstractFilter
+class FXAAFilter() extends Filter

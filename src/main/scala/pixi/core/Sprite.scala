@@ -1,7 +1,7 @@
 package pixi.core
 
 import pixi.Env
-import pixi.core.webgl.filters.AbstractFilter
+import pixi.core.webgl.filters.Filter
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
@@ -31,7 +31,7 @@ Setting the anchor to 1,1 would mean the texture's origin point will be the bott
   var blendMode: Double = js.native
 
   /** The shader that will be used to render the sprite. Set to null to remove a current shader. */
-  var shader: AbstractFilter = js.native
+  var shader: Filter = js.native
 
   /** An internal cached value of the tint. */
   var cachedTint: Double = js.native

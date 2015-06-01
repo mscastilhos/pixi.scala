@@ -3,7 +3,7 @@ package pixi.core.webgl.managers
 import org.scalajs.dom.webgl.Shader
 import pixi.core.{Rectangle, Sprite, Matrix}
 import pixi.core.webgl.WebGLRenderer
-import pixi.core.webgl.filters.AbstractFilter
+import pixi.core.webgl.filters.Filter
 import pixi.core.webgl.utils.RenderTarget
 
 import scala.scalajs.js
@@ -27,10 +27,10 @@ class FilterManager(renderer: WebGLRenderer) extends WebGLManager {
     *
     * @param filterBlock the filter that will be pushed to the current filter stack
     */
-  def pushFilter(filterBlock: AbstractFilter): Unit = js.native
+  def pushFilter(filterBlock: Filter): Unit = js.native
 
   /** Removes the last filter from the filter stack and returns it. */
-  def popFilter(): AbstractFilter = js.native
+  def popFilter(): Filter = js.native
 
   /** Grabs an render target from the internal pool
     *

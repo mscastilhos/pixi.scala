@@ -1,8 +1,8 @@
 package pixi.demos
 
 import org.scalajs.dom
-import pixi.core.webgl.filters.AbstractFilter
-import pixi.core.webgl.filters.AbstractFilter.Uniform
+import pixi.core.webgl.filters.Filter
+import pixi.core.webgl.filters.Filter.Uniform
 import pixi.core.{Sprite, Container, Renderer}
 import pixi.loaders.{Loader, Resource}
 
@@ -27,7 +27,7 @@ object CustomFilter {
 
   pixi.loader.load()
 
-  var filter: AbstractFilter = _
+  var filter: Filter = _
 
   def onLoaded(loader: Loader, res: js.Dictionary[Resource]) {
 
@@ -35,7 +35,7 @@ object CustomFilter {
 
     val customUniform = new Uniform("1f", 0)
 
-    filter = AbstractFilter(fragmentSrc = fragmentSrc, uniforms = js.Dictionary("customUniform" -> customUniform))
+    filter = Filter(fragmentSrc = fragmentSrc, uniforms = js.Dictionary("customUniform" -> customUniform))
 
     bg.filters = js.Array(filter)
 
