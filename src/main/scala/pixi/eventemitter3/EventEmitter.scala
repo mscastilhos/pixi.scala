@@ -64,7 +64,7 @@ trait EventEmitter extends js.Object {
 
 object EventEmitter {
 
-  implicit class RichEventEmitter(val ee: EventEmitter) extends AnyVal {
+  implicit class RichEventEmitter[T <: EventEmitter](val ee: T) extends AnyVal {
     /** Checks if the event emitter has a listener for an event
       *
       * @param event The event listened to
@@ -79,14 +79,16 @@ object EventEmitter {
       *
       * @param events Names of the events.
       * @param cmd Statement executed when the event is fired
+      * @return This event emitter
       */
-    def on[A](events: String*)(cmd: => A): Unit = {
+    def on[A](events: String*)(cmd: => A): T = {
       // Turns the command into a function
       val fn: js.Function0[A] = () => cmd
 
       for (e <- events) {
-        ee.on(e, () => fn)
+        ee.on(e, fn)
       }
+      ee
     }
 
     /** Add an EventListener that's only called once for the given events.
@@ -94,13 +96,14 @@ object EventEmitter {
       * @param events Names of the event.
       * @param cmd Statement executed when the event is fired
       */
-    def once[A](events: String*)(cmd: => A): Unit = {
+    def once[A](events: String*)(cmd: => A): T = {
       // Turns the command into a function
       val fn: js.Function0[A] = () => cmd
 
       for (e <- events) {
-        ee.once(e, () => fn)
+        ee.once(e, fn)
       }
+      ee
     }
   }
 
