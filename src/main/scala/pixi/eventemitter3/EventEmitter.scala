@@ -21,30 +21,14 @@ trait EventEmitter extends js.Object {
     * @param event Name of the event.
     * @param fn Callback function.
     */
-  def on(event: String, fn: js.Function): Unit = js.native
-
-  /** Register a new EventListener for the given event.
-    *
-    * @param event Name of the event.
-    * @param fn Callback function.
-    * @param context The context of the function.
-    */
-  def on[A](event: String, fn: js.Function1[A, _], context: A): Unit = js.native
+  def on(event: String, fn: js.ThisFunction): Unit = js.native
 
   /** Add an EventListener that's only called once.
     *
     * @param event Name of the event.
     * @param fn Callback function.
     */
-  def once(event: String, fn: js.Function): Unit = js.native
-
-  /** Add an EventListener that's only called once.
-    *
-    * @param event Name of the event.
-    * @param fn Callback function.
-    * @param context The context of the function.
-    */
-  def once[A](event: String, fn: js.Function1[A, _], context: A): Unit = js.native
+  def once(event: String, fn: js.ThisFunction): Unit = js.native
 
   /** Remove event listeners.
     *
@@ -53,7 +37,7 @@ trait EventEmitter extends js.Object {
     * @param context Only remove listeners matching this context.
     * @param once Only remove once listeners.
     */
-  def removeListener(event: String, fn: js.Function, context: Any, once: Boolean): Unit = js.native
+  def removeListener(event: String, fn: js.ThisFunction, context: Any, once: Boolean): Unit = js.native
 
   /** Remove all listeners or only the listeners for the specified event.
     *
@@ -83,7 +67,7 @@ object EventEmitter {
       */
     def on[A](events: String*)(cmd: => A): T = {
       // Turns the command into a function
-      val fn: js.Function0[A] = () => cmd
+      val fn: js.ThisFunction = (_: Any) => cmd
 
       for (e <- events) {
         ee.on(e, fn)
@@ -98,14 +82,14 @@ object EventEmitter {
       */
     def once[A](events: String*)(cmd: => A): T = {
       // Turns the command into a function
-      val fn: js.Function0[A] = () => cmd
+      val fn: js.ThisFunction = (_: Any) => cmd
 
       for (e <- events) {
         ee.once(e, fn)
       }
       ee
     }
+
   }
 
 }
-

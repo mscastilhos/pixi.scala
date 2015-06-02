@@ -1,7 +1,6 @@
 package pixi.demos
 
 import org.scalajs.dom
-import pixi.Env
 import pixi.core.{Texture, Sprite, Container, Renderer}
 import pixi.scalajs.ObjectTagView.TaggedObject
 
