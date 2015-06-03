@@ -23,7 +23,7 @@ object TextDemo {
 
   stage.addChild(basicText)
 
-  val style = Text.style(
+  val style = Text.Style(
     font = "36px Arial bold italic",
     fill = "#F7EDCA",
     stroke = "#4a1850",

@@ -60,13 +60,13 @@ object TextDemo2 {
 
     // create some white text using the Snippet webfont
     val textSample = new Text("Pixi.js can has \n multiline text !",
-      Text.style(font = "35px Snippet", fill = "white", align = "left"))
+      Text.Style(font = "35px Snippet", fill = "white", align = "left"))
 
     textSample.position.set(20)
 
     // create a text object with a nice stroke
     val spinningText = new Text("'I'm fun !",
-      Text.style(font = "bold 60px Arial", fill = "#cc00ff", align = "center", stroke = "#FFFFFF", strokeThickness = 6))
+      Text.Style(font = "bold 60px Arial", fill = "#cc00ff", align = "center", stroke = "#FFFFFF", strokeThickness = 6))
 
     // setting the anchor point to 0.5 will center align the text... great for spinning!
     spinningText.anchor.set(0.5)
@@ -75,7 +75,7 @@ object TextDemo2 {
 
     // create a text object that will be updated...
     val countingText = new Text("COUNT 4 EVAR: 0",
-      Text.style(font = "bold italic 60px Arvo", fill = "#3e1707", align = "center", stroke = "#a4410e", strokeThickness = 7))
+      Text.Style(font = "bold italic 60px Arvo", fill = "#3e1707", align = "center", stroke = "#a4410e", strokeThickness = 7))
 
     countingText.position.x = 310
     countingText.position.y = 320
