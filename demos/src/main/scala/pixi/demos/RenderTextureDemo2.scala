@@ -37,7 +37,7 @@ object RenderTextureDemo2 {
   stage.addChild(stuffContainer)
 
   // create an array of image ids..
-  val fruits = for (i <- 1 to 8) yield ("_assets/spinObj_0" + i + ".png")
+  val fruits = for (i <- 1 to 8) yield "_assets/spinObj_0" + i + ".png"
 
   // create an array of items
   // now create some items and randomly position them in the stuff container
