@@ -5,7 +5,6 @@ import pixi.core.{Sprite, Texture, Container, Renderer}
 import pixi.interaction.{InteractionData, EventData}
 import pixi.scalajs.ObjectTagView.TaggedObject
 
-import scala.scalajs.js.ThisFunction
 import scala.scalajs.js.annotation.JSExport
 import scala.util.Random
 
