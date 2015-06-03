@@ -1,7 +1,7 @@
 package pixi.core
 
 import org.scalajs.dom.raw.HTMLVideoElement
-import pixi.Env
+import pixi.{Consts, Env}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName

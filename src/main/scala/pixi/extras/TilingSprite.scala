@@ -1,8 +1,8 @@
 package pixi.extras
 
 import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const
-import pixi.Env
-import pixi.core.{Consts, Point, Texture, Sprite}
+import pixi.{Consts, Env}
+import pixi.core.{Point, Texture, Sprite}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName

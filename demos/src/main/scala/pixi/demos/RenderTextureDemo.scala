@@ -1,6 +1,7 @@
 package pixi.demos
 
 import org.scalajs.dom
+import pixi.Consts
 import pixi.core._
 import pixi.core.Renderer.Options
 

@@ -1,6 +1,4 @@
-package pixi.core
-
-import pixi.Env
+package pixi
 
 /**
  * @author Marcelo Serra Castilhos
