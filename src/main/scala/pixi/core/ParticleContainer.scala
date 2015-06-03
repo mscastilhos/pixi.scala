@@ -64,27 +64,30 @@ object ParticleContainer {
 
   trait Properties extends js.Object
 
-  /** Creates the properties object for a particle container
-    *
-    * @param scale When true, scale be uploaded and applied.
-    * @param position When true, position be uploaded and applied.
-    * @param rotation When true, rotation be uploaded and applied.
-    * @param uvs When true, uvs be uploaded and applied.
-    * @param alpha When true, alpha be uploaded and applied.
-    */
-  def properties(scale: Boolean = false,
-                 position: Boolean = true,
-                 rotation: Boolean = false,
-                 uvs: Boolean = false,
-                 alpha: Boolean = false): Properties = {
-    js.Dynamic.literal(
-      scale = scale,
-      position = position,
-      rotation = rotation,
-      uvs = uvs,
-      alpha = alpha).asInstanceOf[Properties]
+  object Properties {
+
+    /** Creates the properties object for a particle container
+      *
+      * @param scale When true, scale be uploaded and applied.
+      * @param position When true, position be uploaded and applied.
+      * @param rotation When true, rotation be uploaded and applied.
+      * @param uvs When true, uvs be uploaded and applied.
+      * @param alpha When true, alpha be uploaded and applied.
+      */
+    def apply(scale: Boolean = false,
+              position: Boolean = true,
+              rotation: Boolean = false,
+              uvs: Boolean = false,
+              alpha: Boolean = false): Properties = {
+      js.Dynamic.literal(
+        scale = scale,
+        position = position,
+        rotation = rotation,
+        uvs = uvs,
+        alpha = alpha).asInstanceOf[Properties]
+    }
   }
 
   /** Default properties */
-  val DEFAULT = properties()
+  val DEFAULT = Properties()
 }

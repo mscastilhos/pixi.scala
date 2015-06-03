@@ -25,16 +25,13 @@ Setting the anchor to 1,1 would mean the texture's origin point will be the bott
   var anchor: Point = js.native
 
   /** The tint applied to the sprite. This is a hex value. A value of 0xFFFFFF will remove any tint effect. */
-  var tint: Double = js.native
+  var tint: Int = js.native
 
   /** The blend mode to be applied to the sprite. Apply a value of blendModes.NORMAL to reset the blend mode. */
-  var blendMode: Double = js.native
+  var blendMode: Int = js.native
 
   /** The shader that will be used to render the sprite. Set to null to remove a current shader. */
   var shader: Filter = js.native
-
-  /** An internal cached value of the tint. */
-  var cachedTint: Double = js.native
 
   /** The texture that the sprite is using */
   var texture: Texture = js.native

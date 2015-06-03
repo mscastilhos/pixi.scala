@@ -6,6 +6,8 @@ import pixi.core.{Rectangle, Sprite, Container, Renderer}
 import scala.scalajs.js.annotation.JSExport
 import pixi.scalajs.UserData.WithUserData
 
+import scala.util.Random
+
 @JSExport("Tinting")
 object Tinting {
   val renderer = Renderer.autoDetect(800, 600)
@@ -32,7 +34,7 @@ object Tinting {
     dude.position.x = Math.random() * renderer.width
     dude.position.y = Math.random() * renderer.height
 
-    dude.tint = Math.random() * 0xFFFFFF
+    dude.tint = Random.nextInt(0xFFFFFF)
 
     // create some extra properties that will control movement :
     val data = AlienData(
