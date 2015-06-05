@@ -71,7 +71,7 @@ class DisplayObject() extends EventEmitter with InteractiveTarget {
     * utilises shape clipping.
     * To remove a mask, set this property to null.
     */
-  var mask: Graphics = js.native
+  var mask: DisplayObject = js.native
 
   /** Sets the filters for the displayObject.
     * IMPORTANT: This is a webGL only feature and will be ignored by the canvas renderer.
