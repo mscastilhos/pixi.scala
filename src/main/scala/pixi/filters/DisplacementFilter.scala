@@ -1,6 +1,6 @@
 package pixi.filters
 
-import pixi.core.{Texture, Sprite}
+import pixi.core.{Point, Texture, Sprite}
 import pixi.core.webgl.filters.Filter
 
 import scala.scalajs.js
@@ -18,5 +18,7 @@ import scala.scalajs.js.annotation.JSName
 class DisplacementFilter(sprite: Sprite) extends Filter {
   /** The texture used for the displacement map. Must be power of 2 sized texture. */
   var map: Texture = js.native
+
+  var scale: Point = js.native
 }
 

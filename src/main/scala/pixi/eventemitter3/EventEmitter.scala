@@ -21,14 +21,14 @@ trait EventEmitter extends js.Object {
     * @param event Name of the event.
     * @param fn Callback function.
     */
-  def on(event: String, fn: js.ThisFunction): Unit = js.native
+  def on(event: String, fn: js.ThisFunction): this.type = js.native
 
   /** Add an EventListener that's only called once.
     *
     * @param event Name of the event.
     * @param fn Callback function.
     */
-  def once(event: String, fn: js.ThisFunction): Unit = js.native
+  def once(event: String, fn: js.ThisFunction): this.type = js.native
 
   /** Remove event listeners.
     *
