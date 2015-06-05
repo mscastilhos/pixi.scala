@@ -79,6 +79,15 @@ class DisplayObject() extends EventEmitter with InteractiveTarget {
     */
   var filters: js.Array[Filter] = js.native
 
+  /** Set this to true if you want this display object to be cached as a bitmap.
+    *
+    * This basically takes a snap shot of the display object as it is at that moment. It can provide a performance
+    * benefit for complex static displayObjects.
+    *
+    * To remove simply set this property to 'null'
+    */
+  var cacheAsBitmap: Boolean = js.native
+
   /** Retrieves the bounds of the displayObject as a rectangle object
     *
     * @param matrix
