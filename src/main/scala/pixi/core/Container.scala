@@ -87,6 +87,13 @@ class Container() extends DisplayObject {
     */
   def removeChildren(beginIndex: Int, endIndex: Int): Unit = js.native
 
+  /** Returns the display object in the container
+    *
+    * @param name instance name
+    * @return The child with that name
+    */
+  def getChildByName(name: String): DisplayObject = js.native
+
   /** Retrieves the bounds of the Container as a rectangle. The bounds calculation takes all visible children into
     * consideration.
     *

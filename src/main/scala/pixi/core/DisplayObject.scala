@@ -148,4 +148,12 @@ class DisplayObject() extends EventEmitter with InteractiveTarget {
 
   /** Base destroy method for generic display objects */
   def destroy(): Unit = js.native
+
+
+  /** Returns the global position of the displayObject
+    *
+    * @param point the point to write the global value to. If null a new point will be returned
+    * @return the global position of the displayObject
+    */
+  def getGlobalPosition(point: Point = null): Point = js.native
 }

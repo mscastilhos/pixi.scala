@@ -82,7 +82,7 @@ trait Loader extends EventEmitter {
     * @param callback Optional callback that will be bound to the `complete` event.
     * @return
     */
-  def load(callback: js.Function0[_]): Loader = js.native
+  def load(callback: js.Function): Loader = js.native
 }
 
 object Loader {
