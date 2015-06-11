@@ -1,6 +1,7 @@
 lazy val root = project.in(file(".")).
   enablePlugins(ScalaJSPlugin).
   settings(
+    organization := "com.mscastilhos",
     scalaVersion := "2.11.6",
     name := "Pixi.scala",
     version := "0.0.1",

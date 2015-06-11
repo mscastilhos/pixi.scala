@@ -37,6 +37,22 @@ trait EventEmitter extends js.Object {
     * @param context Only remove listeners matching this context.
     * @param once Only remove once listeners.
     */
+  def off(event: String, fn: js.ThisFunction, context: Any, once: Boolean): Unit = js.native
+
+  /** Register a new EventListener for the given event.
+    *
+    * @param event Name of the event.
+    * @param fn Callback function.
+    */
+  def addListener(event: String, fn: js.ThisFunction): this.type = js.native
+
+  /** Remove event listeners.
+    *
+    * @param event The event we want to remove.
+    * @param fn The listener that we need to find.
+    * @param context Only remove listeners matching this context.
+    * @param once Only remove once listeners.
+    */
   def removeListener(event: String, fn: js.ThisFunction, context: Any, once: Boolean): Unit = js.native
 
   /** Remove all listeners or only the listeners for the specified event.
