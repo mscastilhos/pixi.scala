@@ -30,31 +30,6 @@ object Consts {
   }
 
   /**
-   * Various blend modes supported by PIXI. IMPORTANT - The WebGL renderer only supports
-   * the NORMAL, ADD, MULTIPLY and SCREEN blend modes. Anything else will silently act like
-   * NORMAL.
-   */
-  object BLEND_MODES {
-    val NORMAL: Int = g.PIXI.BLEND_MODES.NORMAL.asInstanceOf[Int]
-    val ADD: Int = g.PIXI.BLEND_MODES.ADD.asInstanceOf[Int]
-    val MULTIPLY: Int = g.PIXI.BLEND_MODES.MULTIPLY.asInstanceOf[Int]
-    val SCREEN: Int = g.PIXI.BLEND_MODES.SCREEN.asInstanceOf[Int]
-    val OVERLAY: Int = g.PIXI.BLEND_MODES.OVERLAY.asInstanceOf[Int]
-    val DARKEN: Int = g.PIXI.BLEND_MODES.DARKEN.asInstanceOf[Int]
-    val LIGHTEN: Int = g.PIXI.BLEND_MODES.LIGHTEN.asInstanceOf[Int]
-    val COLOR_DODGE: Int = g.PIXI.BLEND_MODES.COLOR_DODGE.asInstanceOf[Int]
-    val COLOR_BURN: Int = g.PIXI.BLEND_MODES.COLOR_BURN.asInstanceOf[Int]
-    val HARD_LIGHT: Int = g.PIXI.BLEND_MODES.HARD_LIGHT.asInstanceOf[Int]
-    val SOFT_LIGHT: Int = g.PIXI.BLEND_MODES.SOFT_LIGHT.asInstanceOf[Int]
-    val DIFFERENCE: Int = g.PIXI.BLEND_MODES.DIFFERENCE.asInstanceOf[Int]
-    val EXCLUSION: Int = g.PIXI.BLEND_MODES.EXCLUSION.asInstanceOf[Int]
-    val HUE: Int = g.PIXI.BLEND_MODES.HUE.asInstanceOf[Int]
-    val SATURATION: Int = g.PIXI.BLEND_MODES.SATURATION.asInstanceOf[Int]
-    val COLOR: Int = g.PIXI.BLEND_MODES.COLOR.asInstanceOf[Int]
-    val LUMINOSITY: Int = g.PIXI.BLEND_MODES.LUMINOSITY.asInstanceOf[Int]
-  }
-
-  /**
    * The scale modes that are supported by pixi.
    *
    * The DEFAULT scale mode affects the default scaling mode of future operations.
