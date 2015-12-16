@@ -25,9 +25,6 @@ class Ellipse(_x: Double, _y: Double, _width: Double, _height: Double) extends S
   /** The half height of this ellipse */
   var height: Double = js.native
 
-  /** The type of the object, mainly used to avoid `instanceof` checks */
-  var `type`: Int = js.native
-
   /** Creates a clone of this Ellipse instance
     *
     * @return a copy of the ellipse

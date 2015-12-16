@@ -29,9 +29,6 @@ class RoundedRectangle(_x: Double, _y: Double, _width: Double, _height: Double, 
   /** Controls the radius of the rounded corners */
   var radius: Double = js.native
 
-  /** The type of the object, mainly used to avoid `instanceof` checks */
-  var `type`: Int = js.native
-
   /** Creates a clone of this Rounded Rectangle
     *
     * @return a copy of the rounded rectangle

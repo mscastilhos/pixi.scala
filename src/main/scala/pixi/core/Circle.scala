@@ -19,9 +19,6 @@ class Circle(_x: Double, _y: Double, _radius: Double) extends Shape {
   /** The radius of the circle */
   var radius: Double = js.native
 
-  /** The type of the object, mainly used to avoid `instanceof` checks */
-  var `type`: Int = js.native
-
   /** Creates a clone of this Circle instance
     *
     * @return a copy of the Circle

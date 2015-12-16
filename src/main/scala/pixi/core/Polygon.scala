@@ -16,9 +16,6 @@ class Polygon(_points: js.Object*) extends Shape {
   /** An array of the points of this polygon */
   var points: js.Array[Double] = js.native
 
-  /** The type of the object, mainly used to avoid `instanceof` checks */
-  var `type`: Int = js.native
-
   /** Creates a clone of this polygon
     *
     * @return a copy of the polygon

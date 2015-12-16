@@ -26,9 +26,6 @@ class Rectangle(_x: Double, _y: Double, _width: Double, _height: Double) extends
   /** The overall height of this rectangle */
   var height: Double = js.native
 
-  /** The type of the object, mainly used to avoid `instanceof` checks */
-  var `type`: Int = js.native
-
   /** Creates a clone of this Rectangle
     *
     * @return a copy of the rectangle

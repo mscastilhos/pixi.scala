@@ -82,14 +82,5 @@ object Consts {
 
   val FILTER_RESOLUTION: Int = g.PIXI.FILTER_RESOLUTION.asInstanceOf[Int]
 
-  /** Constants that identify shapes, mainly to prevent `instanceof` calls. */
-  object SHAPES {
-    val POLY: Int = g.PIXI.SHAPES.POLY.asInstanceOf[Int]
-    val RECT: Int = g.PIXI.SHAPES.RECT.asInstanceOf[Int]
-    val CIRC: Int = g.PIXI.SHAPES.CIRC.asInstanceOf[Int]
-    val ELIP: Int = g.PIXI.SHAPES.ELIP.asInstanceOf[Int]
-    val RREC: Int = g.PIXI.SHAPES.RREC.asInstanceOf[Int]
-  }
-
   val SPRITE_BATCH_SIZE: Int = g.PIXI.SPRITE_BATCH_SIZE.asInstanceOf[Int]
 }
