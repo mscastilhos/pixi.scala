@@ -1,9 +1,8 @@
 package pixi.core
 
-import pixi.Env
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
+import js.Dynamic.{global => g}
 
 /** the Rectangle object is an area defined by its position, as indicated by its top-left corner point (x, y) and by its width and its height.
   * @constructor
@@ -47,5 +46,5 @@ class Rectangle(_x: Double, _y: Double, _width: Double, _height: Double) extends
 
 object Rectangle {
   /** A constant empty rectangle. */
-  val EMPTY: Rectangle = Env.PIXI.Rectangle.EMPTY.asInstanceOf[Rectangle]
+  val EMPTY: Rectangle = g.PIXI.Rectangle.EMPTY.asInstanceOf[Rectangle]
 }

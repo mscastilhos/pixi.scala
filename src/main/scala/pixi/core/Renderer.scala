@@ -1,7 +1,6 @@
 package pixi.core
 
 import org.scalajs.dom.raw.HTMLCanvasElement
-import pixi.Env
 import pixi.eventemitter3.EventEmitter
 
 import scala.scalajs.js
@@ -123,7 +122,7 @@ object Renderer {
                  height: Int = 600,
                  options: Options = new Options,
                  noWebGL: Boolean = false): Renderer = {
-    Env.PIXI.autoDetectRenderer(width, height, options, noWebGL).asInstanceOf[Renderer]
+    js.Dynamic.global.PIXI.autoDetectRenderer(width, height, options, noWebGL).asInstanceOf[Renderer]
   }
 
 }

@@ -1,10 +1,11 @@
 package pixi.core
 
-import pixi.Env
 import pixi.core.webgl.filters.Filter
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
+import js.Dynamic.{global => g}
+
 
 /** The Sprite object is the base for all textured objects that are rendered to the screen
   *
@@ -65,7 +66,7 @@ object Sprite {
     */
   @inline
   def fromFrame(frameId: String): Sprite = {
-    Env.PIXI.Sprite.fromFrame(frameId).asInstanceOf[Sprite]
+    g.PIXI.Sprite.fromFrame(frameId).asInstanceOf[Sprite]
   }
 
   /** Helper function that creates a sprite that will contain a texture based on an image url
@@ -76,6 +77,6 @@ object Sprite {
     */
   @inline
   def fromImage(imageId: String): Sprite = {
-    Env.PIXI.Sprite.fromImage(imageId).asInstanceOf[Sprite]
+    g.PIXI.Sprite.fromImage(imageId).asInstanceOf[Sprite]
   }
 }

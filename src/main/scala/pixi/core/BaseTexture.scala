@@ -2,12 +2,13 @@ package pixi.core
 
 import org.scalajs.dom.html.Canvas
 import org.scalajs.dom.raw.HTMLElement
-import pixi.{Consts, Env}
+import pixi.Consts
 import pixi.eventemitter3.EventEmitter
 
 import scala.scalajs.js
 import scala.scalajs.js.UndefOr
 import scala.scalajs.js.annotation.JSName
+import js.Dynamic.{global => g}
 
 /** A texture stores the information that represents an image. All textures have a base texture. */
 @js.native
@@ -109,7 +110,7 @@ object BaseTexture {
   def fromImage(imageUrl: String,
                 crossorigin: UndefOr[Boolean] = js.undefined,
                 scaleMode: UndefOr[Int] = js.undefined): BaseTexture = {
-    Env.PIXI.BaseTexture.fromImage(imageUrl, crossorigin, scaleMode).asInstanceOf[BaseTexture]
+    g.PIXI.BaseTexture.fromImage(imageUrl, crossorigin, scaleMode).asInstanceOf[BaseTexture]
   }
 
   /**
@@ -121,7 +122,7 @@ object BaseTexture {
    */
   @inline
   def fromImage(imageUrl: String): BaseTexture = {
-    Env.PIXI.BaseTexture.fromImage(imageUrl).asInstanceOf[BaseTexture]
+    g.PIXI.BaseTexture.fromImage(imageUrl).asInstanceOf[BaseTexture]
   }
 
   /**
@@ -133,7 +134,7 @@ object BaseTexture {
    */
   @inline
   def fromCanvas(canvas: Canvas, scaleMode: Int): BaseTexture = {
-    Env.PIXI.BaseTexture.fromCanvas(canvas, scaleMode).asInstanceOf[BaseTexture]
+    g.PIXI.BaseTexture.fromCanvas(canvas, scaleMode).asInstanceOf[BaseTexture]
   }
 }
 

@@ -1,11 +1,11 @@
 package pixi.extras
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const
-import pixi.{Consts, Env}
+import pixi.Consts
 import pixi.core.{Point, Texture, Sprite}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
+import js.Dynamic.{global => g}
 
 /** A tiling sprite is a fast way of rendering a tiling image
   * @constructor
@@ -34,7 +34,7 @@ object TilingSprite {
     */
   @inline
   def fromFrame(frameId: String, width: Int, height: Int): TilingSprite = {
-    Env.PIXI.extras.TilingSprite.fromFrame(frameId, width, height).asInstanceOf[TilingSprite]
+    g.PIXI.extras.TilingSprite.fromFrame(frameId, width, height).asInstanceOf[TilingSprite]
   }
 
   /** Helper function that creates a sprite that will contain a texture based on an image url
@@ -47,7 +47,7 @@ object TilingSprite {
     */
   @inline
   def fromImage(imageId: String, width: Int, height: Int): TilingSprite = {
-    Env.PIXI.extras.TilingSprite.fromImage(imageId, width, height).asInstanceOf[TilingSprite]
+    g.PIXI.extras.TilingSprite.fromImage(imageId, width, height).asInstanceOf[TilingSprite]
   }
 
   /** Helper function that creates a sprite that will contain a texture based on an image url
@@ -66,7 +66,7 @@ object TilingSprite {
                 height: Int,
                 crossorigin: Boolean,
                 scaleMode: Double = Consts.SCALE_MODES.DEFAULT): TilingSprite = {
-    Env.PIXI.extras.TilingSprite.fromImage(imageId, width, height, crossorigin, scaleMode).asInstanceOf[TilingSprite]
+    g.PIXI.extras.TilingSprite.fromImage(imageId, width, height, crossorigin, scaleMode).asInstanceOf[TilingSprite]
   }
 }
 

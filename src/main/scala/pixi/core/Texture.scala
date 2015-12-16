@@ -2,11 +2,13 @@ package pixi.core
 
 import org.scalajs.dom.html.Canvas
 import org.scalajs.dom.raw.HTMLVideoElement
-import pixi.{Consts, Env}
+import pixi.Consts
 import pixi.eventemitter3.EventEmitter
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
+import js.Dynamic.{global => g}
+
 
 /** A texture stores the information that represents an image or part of an image. It cannot be added
   * to the display list directly. Instead use it as the texture for a Sprite. If no frame is provided then the whole image is used.
@@ -66,7 +68,7 @@ object Texture {
     */
   @inline
   def fromImage(imageUrl: String): Texture = {
-    Env.PIXI.Texture.fromImage(imageUrl).asInstanceOf[Texture]
+    g.PIXI.Texture.fromImage(imageUrl).asInstanceOf[Texture]
   }
 
   /** Helper function that creates a Texture object from the given image url.
@@ -79,7 +81,7 @@ object Texture {
     */
   @inline
   def fromImage(imageUrl: String, crossorigin: Boolean, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): Texture = {
-    Env.PIXI.Texture.fromImage(imageUrl, crossorigin, scaleMode).asInstanceOf[Texture]
+    g.PIXI.Texture.fromImage(imageUrl, crossorigin, scaleMode).asInstanceOf[Texture]
   }
 
   /** Helper function that creates a sprite that will contain a texture from the TextureCache based on the frameId
@@ -90,7 +92,7 @@ object Texture {
     */
   @inline
   def fromFrame(frameId: String): Texture = {
-    Env.PIXI.Texture.fromFrame(frameId).asInstanceOf[Texture]
+    g.PIXI.Texture.fromFrame(frameId).asInstanceOf[Texture]
   }
 
   /** Helper function that creates a new Texture based on the given canvas element.
@@ -101,7 +103,7 @@ object Texture {
     */
   @inline
   def fromCanvas(canvas: Canvas, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): Texture = {
-    Env.PIXI.Texture.fromCanvas(canvas, scaleMode).asInstanceOf[Texture]
+    g.PIXI.Texture.fromCanvas(canvas, scaleMode).asInstanceOf[Texture]
   }
 
   /** Helper function that creates a new Texture based on the given video element.
@@ -112,7 +114,7 @@ object Texture {
     */
   @inline
   def fromVideo(video: HTMLVideoElement, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): Texture = {
-    Env.PIXI.Texture.fromVideo(video, scaleMode).asInstanceOf[Texture]
+    g.PIXI.Texture.fromVideo(video, scaleMode).asInstanceOf[Texture]
   }
 
   /** Helper function that creates a new Texture based on the video url.
@@ -123,7 +125,7 @@ object Texture {
     */
   @inline
   def fromVideoUrl(videoUrl: String, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): Texture = {
-    Env.PIXI.Texture.fromVideoUrl(videoUrl, scaleMode).asInstanceOf[Texture]
+    g.PIXI.Texture.fromVideoUrl(videoUrl, scaleMode).asInstanceOf[Texture]
   }
 
   /** Adds a texture to the global utils.TextureCache. This cache is shared across the whole PIXI object.
@@ -133,7 +135,7 @@ object Texture {
     */
   @inline
   def addTextureToCache(texture: Texture, id: String): Unit = {
-    Env.PIXI.Texture.addTextureToCache(texture, id)
+    g.PIXI.Texture.addTextureToCache(texture, id)
   }
 
   /** Remove a texture from the global utils.TextureCache.
@@ -143,6 +145,6 @@ object Texture {
     */
   @inline
   def removeTextureFromCache(id: String): Texture = {
-    Env.PIXI.Texture.removeTextureFromCache(id).asInstanceOf[Texture]
+    g.PIXI.Texture.removeTextureFromCache(id).asInstanceOf[Texture]
   }
 }

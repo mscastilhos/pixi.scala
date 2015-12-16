@@ -1,9 +1,8 @@
 package pixi.core
 
-import pixi.Env
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
+import js.Dynamic.{global => g}
 
 /** The pixi Matrix class as an object, which makes it a lot faster,
   * here is a representation of it :
@@ -124,8 +123,8 @@ class Matrix() extends js.Object {
 
 object Matrix {
   /** A default (identity) matrix */
-  val IDENTITY: Matrix = Env.PIXI.Matrix.IDENTITY.asInstanceOf[Matrix]
+  val IDENTITY: Matrix = g.PIXI.Matrix.IDENTITY.asInstanceOf[Matrix]
 
   /** A temp matrix */
-  val TEMP_MATRIX: Matrix = Env.PIXI.Matrix.TEMP_MATRIX.asInstanceOf[Matrix]
+  val TEMP_MATRIX: Matrix = g.PIXI.Matrix.TEMP_MATRIX.asInstanceOf[Matrix]
 }

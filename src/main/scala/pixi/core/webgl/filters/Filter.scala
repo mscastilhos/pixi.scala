@@ -1,6 +1,5 @@
 package pixi.core.webgl.filters
 
-import pixi.Env
 import pixi.core.webgl.WebGLRenderer
 import pixi.core.webgl.filters.Filter.Uniform
 import pixi.core.webgl.utils.RenderTarget
@@ -8,6 +7,7 @@ import pixi.core.webgl.utils.RenderTarget
 import scala.scalajs.js
 import scala.scalajs.js.`|`
 import scala.scalajs.js.annotation.{JSName, ScalaJSDefined}
+import js.Dynamic.{global => g}
 
 /** This is the base class for creating a PIXI filter. Currently only WebGL supports filters.
   * If you want to make a custom filter this should be your base class.
@@ -60,7 +60,7 @@ object Filter {
   def apply(vertexSrc: String = null,
             fragmentSrc: String = null,
             uniforms: js.Dictionary[Uniform] = js.Dictionary()): Filter = {
-    js.Dynamic.newInstance(Env.PIXI.AbstractFilter)(vertexSrc, fragmentSrc, uniforms).asInstanceOf[Filter]
+    js.Dynamic.newInstance(g.PIXI.AbstractFilter)(vertexSrc, fragmentSrc, uniforms).asInstanceOf[Filter]
   }
 
   @ScalaJSDefined

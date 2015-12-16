@@ -1,10 +1,11 @@
 package pixi.extras
 
-import pixi.Env
 import pixi.core.{Texture, Sprite}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
+import js.Dynamic.{global => g}
+
 
 /** A MovieClip is a simple way to display an animation depicted by a list of textures.
   *
@@ -70,7 +71,7 @@ object MovieClip {
     */
   @inline
   def fromFrames(frames: js.Array[String]): MovieClip = {
-    Env.PIXI.extras.MovieClip.fromFrames(frames).asInstanceOf[MovieClip]
+    g.PIXI.extras.MovieClip.fromFrames(frames).asInstanceOf[MovieClip]
   }
 
   /** A short hand way of creating a movieclip from an array of frame ids
@@ -79,7 +80,7 @@ object MovieClip {
     */
   @inline
   def fromFrames(frames: Seq[String]): MovieClip = {
-    Env.PIXI.extras.MovieClip.fromFrames(frames.to[js.Array]).asInstanceOf[MovieClip]
+    g.PIXI.extras.MovieClip.fromFrames(frames.to[js.Array]).asInstanceOf[MovieClip]
   }
 
   /** A short hand way of creating a movieclip from an array of image ids
@@ -88,7 +89,7 @@ object MovieClip {
     */
   @inline
   def fromImages(images: js.Array[String]): Unit = {
-    Env.PIXI.extras.MovieClip.fromImages(images).asInstanceOf[MovieClip]
+    g.PIXI.extras.MovieClip.fromImages(images).asInstanceOf[MovieClip]
   }
 
   /** A short hand way of creating a movieclip from an array of image ids
@@ -97,6 +98,6 @@ object MovieClip {
     */
   @inline
   def fromImages(images: Seq[String]): Unit = {
-    Env.PIXI.extras.MovieClip.fromImages(images.to[js.Array]).asInstanceOf[MovieClip]
+    g.PIXI.extras.MovieClip.fromImages(images.to[js.Array]).asInstanceOf[MovieClip]
   }
 }
