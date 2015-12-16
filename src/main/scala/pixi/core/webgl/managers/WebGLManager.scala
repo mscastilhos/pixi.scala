@@ -5,6 +5,7 @@ import pixi.core.webgl.WebGLRenderer
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 
+@js.native
 @JSName("PIXI.WebGLManager")
 trait WebGLManager extends js.Object {
   /** The renderer this manager works for. */

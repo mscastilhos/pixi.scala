@@ -9,6 +9,7 @@ import scala.scalajs.js.annotation.JSName
 /** A TiltShiftAxisFilter.
   * @constructor
   */
+@js.native
 @JSName("PIXI.filters.TiltShiftAxisFilter")
 class TiltShiftAxisFilter() extends Filter {
   /** Updates the filter delta values.

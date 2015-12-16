@@ -11,6 +11,7 @@ import scala.scalajs.js.annotation.JSName
   * @param _height The overall height of this rounded rectangle
   * @param _radius Controls the radius of the rounded corners
   */
+@js.native
 @JSName("PIXI.RoundedRectangle")
 class RoundedRectangle(_x: Double, _y: Double, _width: Double, _height: Double, _radius: Double) extends Shape {
   /** The X coordinate of the upper-left corner of the rounded rectangle */

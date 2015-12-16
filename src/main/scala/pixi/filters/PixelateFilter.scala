@@ -9,6 +9,7 @@ import scala.scalajs.js.annotation.JSName
 /** This filter applies a pixelate effect making display objects appear 'blocky'.
   * @constructor
   */
+@js.native
 @JSName("PIXI.filters.PixelateFilter")
 class PixelateFilter() extends Filter {
   /** This a point that describes the size of the blocks.

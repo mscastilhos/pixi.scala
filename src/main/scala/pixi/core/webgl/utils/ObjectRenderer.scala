@@ -10,25 +10,18 @@ import scala.scalajs.js.annotation.JSName
   * @constructor
   * @param renderer The renderer this object renderer works for.
   */
+@js.native
 @JSName("PIXI.ObjectRenderer")
 class ObjectRenderer(renderer: WebGLRenderer) extends WebGLManager {
-  /** Starts the renderer and sets the shader
-    *
-    */
+  /** Starts the renderer and sets the shader */
   def start(): Unit = js.native
 
-  /** Stops the renderer
-    *
-    */
+  /** Stops the renderer */
   def stop(): Unit = js.native
 
-  /** flushes
-    *
-    */
+  /** flushes */
   def flush(): Unit = js.native
 
-  /** Renders an object
-    *
-    */
+  /** Renders an object */
   def render(): Unit = js.native
 }

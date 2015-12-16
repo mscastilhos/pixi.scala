@@ -17,8 +17,9 @@ import scala.scalajs.js.annotation.JSName
   * @constructor
   * @param _textures an array of {Texture} objects that make up the animation
   */
+@js.native
 @JSName("PIXI.extras.MovieClip")
-class MovieClip(_textures: js.Array[Texture]) extends Sprite(null) {
+class MovieClip(_textures: js.Array[Texture]) extends Sprite() {
 
   /** The speed that the MovieClip will play at. Higher is faster, lower is slower */
   var animationSpeed: Double = js.native

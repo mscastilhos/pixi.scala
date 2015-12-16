@@ -10,8 +10,9 @@ import scala.scalajs.js.annotation.JSName
   * @param _dirX the X direction of the blur
   * @param _dirY the Y direction of the blur
   */
+@js.native
 @JSName("PIXI.filters.BlurDirFilter")
-class BlurDirFilter(_dirX: Double, _dirY: Double) extends Filter {
+class BlurDirFilter(_dirX: Double, _dirY: Double) extends Filter() {
   /** Sets the number of passes for blur. More passes means higher quaility bluring. */
   var passes: Double = js.native
 

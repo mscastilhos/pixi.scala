@@ -1,12 +1,14 @@
 package pixi.eventemitter3
 
 import scala.scalajs.js
+import scala.scalajs.js.UndefOr
 import scala.scalajs.js.annotation.JSName
 
 /** Minimal EventEmitter interface that is molded against the Node.js
   * EventEmitter interface.
   * @constructor
   */
+@js.native
 @JSName("EventEmitter")
 trait EventEmitter extends js.Object {
   /** Emit an event to all registered event listeners.
@@ -14,7 +16,12 @@ trait EventEmitter extends js.Object {
     * @param event The name of the event.
     * @return Indication if we've emitted an event.
     */
-  def emit(event: String): Boolean = js.native
+  def emit[A, B, C, D, E](event: String,
+                          a: UndefOr[A] = js.undefined,
+                          b: UndefOr[B] = js.undefined,
+                          c: UndefOr[C] = js.undefined,
+                          d: UndefOr[D] = js.undefined,
+                          e: UndefOr[E] = js.undefined): Boolean = js.native
 
   /** Register a new EventListener for the given event.
     *

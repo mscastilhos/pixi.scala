@@ -15,6 +15,7 @@ import scala.scalajs.js
  * - start Emitted when the loader begins to process the queue.
  * - complete Emitted when the queued resources all load.
  */
+@js.native
 trait Loader extends EventEmitter {
 
   /** The base url for all resources loaded by this loader. */
@@ -30,7 +31,7 @@ trait Loader extends EventEmitter {
   var _progressChunk: Double = js.native
 
   /** All the resources for this loader keyed by name. */
-  var resources: js.Object = js.native
+  var resources:js.Dictionary[Resource] = js.native
 
   // TODO: Better add()
   /** Adds a resource to the loader queue.

@@ -6,18 +6,22 @@ import pixi.{Consts, Env}
 import pixi.eventemitter3.EventEmitter
 
 import scala.scalajs.js
+import scala.scalajs.js.UndefOr
 import scala.scalajs.js.annotation.JSName
 
-/** A texture stores the information that represents an image. All textures have a base texture.
-  * @constructor
-  * @param _source the source object of the texture.
-  * @param _scaleMode See { @link SCALE_MODES} for possible values
-  * @param _resolution the resolution of the texture for devices with different pixel ratios
-  */
+/** A texture stores the information that represents an image. All textures have a base texture. */
+@js.native
 @JSName("PIXI.BaseTexture")
-class BaseTexture(_source: HTMLElement,
-                  _scaleMode: Int = Consts.SCALE_MODES.DEFAULT,
-                  _resolution: Double = 1) extends EventEmitter {
+class BaseTexture protected[pixi]() extends EventEmitter {
+  /**
+   * @param source the source object of the texture.
+   * @param scaleMode See { @link SCALE_MODES} for possible values
+   * @param resolution the resolution of the texture for devices with different pixel ratios
+   */
+  def this(source: HTMLElement,
+           scaleMode: Int = Consts.SCALE_MODES.DEFAULT,
+           resolution: Double = 1) = this()
+
   /** The Resolution of the texture. */
   var resolution: Double = js.native
 
@@ -34,7 +38,7 @@ class BaseTexture(_source: HTMLElement,
   val realHeight: Int = js.native
 
   /** The scale mode to apply when scaling this texture */
-  var scaleMode: Object = js.native
+  var scaleMode: Int = js.native
 
   /** Set to true once the base texture has successfully loaded.
     *
@@ -48,7 +52,7 @@ class BaseTexture(_source: HTMLElement,
     * dispatched when the operation ends. An underyling source that is
     * immediately-available bypasses loading entirely.
     */
-  val isLoading: Boolean = js.native
+  def isLoading: Boolean = js.native
 
   /** The image source that is used to create the texture.
     *
@@ -102,7 +106,9 @@ object BaseTexture {
    * @return BaseTexture
    */
   @inline
-  def fromImage(imageUrl: String, crossorigin: Boolean, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): BaseTexture = {
+  def fromImage(imageUrl: String,
+                crossorigin: UndefOr[Boolean] = js.undefined,
+                scaleMode: UndefOr[Int] = js.undefined): BaseTexture = {
     Env.PIXI.BaseTexture.fromImage(imageUrl, crossorigin, scaleMode).asInstanceOf[BaseTexture]
   }
 

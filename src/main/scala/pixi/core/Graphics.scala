@@ -2,11 +2,13 @@ package pixi.core
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
+import scala.scalajs.js.`|`
 
 /** The Graphics class contains methods used to draw primitive shapes such as lines, circles and
   * rectangles to the display, and to color and fill them.
   * @constructor
   */
+@js.native
 @JSName("PIXI.Graphics")
 class Graphics() extends Container {
   /** The alpha value used when filling the Graphics object. */
@@ -179,7 +181,7 @@ class Graphics() extends Container {
     * @param path The path data used to construct the polygon.
     * @return
     */
-  def drawPolygon(path: js.Object*): Graphics = js.native
+  def drawPolygon(path: js.Array[Point] | js.Array[Float]): Graphics = js.native
 
   /** Clears the graphics that were drawn to this Graphics object, and resets fill and line style settings.
     *

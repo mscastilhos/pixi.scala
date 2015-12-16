@@ -2,7 +2,8 @@ package pixi.core
 
 import ParticleContainer.Properties
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSName
+import scala.scalajs.js.UndefOr
+import scala.scalajs.js.annotation.{ScalaJSDefined, JSName}
 
 /** The ParticleContainer class is a really fast version of the Container built solely for speed,
   * so use when you need a lot of sprites or particles. The tradeoff of the ParticleContainer is that advanced
@@ -25,10 +26,13 @@ import scala.scalajs.js.annotation.JSName
   * @constructor
   * @param size The number of images in the SpriteBatch before it flushes.
   * @param properties The properties of children that should be uploaded to the gpu and applied.
+  * @param batchSize Number of particles per batch.
   */
+@js.native
 @JSName("PIXI.ParticleContainer")
-class ParticleContainer(size: Double = 15000,
-                        properties: Properties = ParticleContainer.DEFAULT) extends Container {
+class ParticleContainer(size: UndefOr[Int] = js.undefined,
+                        properties: UndefOr[Properties] = js.undefined,
+                        batchSize: UndefOr[Int] = js.undefined) extends Container {
 
   /** The blend mode to be applied to the sprite. Apply a value of blendModes.NORMAL to reset the blend mode. */
   var blendMode: Double = js.native
@@ -62,32 +66,23 @@ class ParticleContainer(size: Double = 15000,
 
 object ParticleContainer {
 
-  trait Properties extends js.Object
+  /** Particle container properties */
+  @ScalaJSDefined
+  class Properties extends js.Object {
+    /** When true, scale be uploaded and applied. */
+    var scale: Boolean = false
 
-  object Properties {
+    /** When true, position be uploaded and applied. */
+    var position: Boolean = true
 
-    /** Creates the properties object for a particle container
-      *
-      * @param scale When true, scale be uploaded and applied.
-      * @param position When true, position be uploaded and applied.
-      * @param rotation When true, rotation be uploaded and applied.
-      * @param uvs When true, uvs be uploaded and applied.
-      * @param alpha When true, alpha be uploaded and applied.
-      */
-    def apply(scale: Boolean = false,
-              position: Boolean = true,
-              rotation: Boolean = false,
-              uvs: Boolean = false,
-              alpha: Boolean = false): Properties = {
-      js.Dynamic.literal(
-        scale = scale,
-        position = position,
-        rotation = rotation,
-        uvs = uvs,
-        alpha = alpha).asInstanceOf[Properties]
-    }
+    /** When true, rotation be uploaded and applied. */
+    var rotation: Boolean = false
+
+    /** When true, uvs be uploaded and applied. */
+    var uvs: Boolean = false
+
+    /** When true, alpha be uploaded and applied. */
+    var alpha: Boolean = false
   }
 
-  /** Default properties */
-  val DEFAULT = Properties()
 }

@@ -9,6 +9,7 @@ import scala.scalajs.js
 /** Manages the state and loading of a single resource represented by
   * a single URL.
   */
+@js.native
 trait Resource extends EventEmitter {
   /** The name of this resource. */
   val name: String = js.native

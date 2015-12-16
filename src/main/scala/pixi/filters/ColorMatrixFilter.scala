@@ -16,6 +16,7 @@ import scala.scalajs.js.annotation.JSName
   * }}}
   * @constructor
   */
+@js.native
 @JSName("PIXI.filters.ColorMatrixFilter")
 class ColorMatrixFilter() extends Filter {
   /** Transforms current matrix and set the new one

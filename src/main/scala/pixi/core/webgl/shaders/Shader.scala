@@ -5,6 +5,7 @@ import org.scalajs.dom.raw.{WebGLProgram, WebGLRenderingContext}
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 
+@js.native
 @JSName("PIXI.Shader")
 trait Shader extends js.Object {
   /** A unique id */

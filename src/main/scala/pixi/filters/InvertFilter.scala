@@ -8,6 +8,7 @@ import scala.scalajs.js.annotation.JSName
 /** This inverts your Display Objects colors.
   * @constructor
   */
+@js.native
 @JSName("PIXI.filters.InvertFilter")
 class InvertFilter() extends Filter {
   /** The strength of the invert. `1` will fully invert the colors, and `0` will make the object its normal color. */

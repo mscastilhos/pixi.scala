@@ -6,6 +6,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 
 /** A set of functions used to handle masking. */
+@js.native
 @JSName("PIXI.CanvasMaskManager")
 class CanvasMaskManager() extends js.Object {
   /** This method adds it to the current stack of masks.

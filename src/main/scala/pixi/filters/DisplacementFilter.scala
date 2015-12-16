@@ -14,6 +14,7 @@ import scala.scalajs.js.annotation.JSName
   * @constructor
   * @param sprite the sprite used for the displacement map. (make sure its added to the scene!)
   */
+@js.native
 @JSName("PIXI.filters.DisplacementFilter")
 class DisplacementFilter(sprite: Sprite) extends Filter {
   /** The texture used for the displacement map. Must be power of 2 sized texture. */

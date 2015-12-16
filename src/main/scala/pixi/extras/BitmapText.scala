@@ -1,9 +1,10 @@
 package pixi.extras
 
-import pixi.core.{Rectangle, Container}
+import pixi.core.Container
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSExportAll, JSName}
+import scala.scalajs.js.`|`
+import scala.scalajs.js.annotation.{ScalaJSDefined, JSName}
 
 /** A BitmapText object will create a line or multiple lines of text using bitmap font. To
   * split a line you can use '\n', '\r' or '\r\n' in your string. You can generate the fnt files using:
@@ -22,6 +23,7 @@ import scala.scalajs.js.annotation.{JSExportAll, JSName}
   * @param _text The copy that you would like the text to display
   * @param _style The style parameters
   */
+@js.native
 @JSName("PIXI.extras.BitmapText")
 class BitmapText(_text: String, _style: js.Object) extends Container {
   /** The width of the overall text, different from fontSize, which is defined in the style object */
@@ -54,22 +56,27 @@ class BitmapText(_text: String, _style: js.Object) extends Container {
 
 object BitmapText {
 
-  /** Base trait for font styles */
-  trait Style extends js.Object
+  /** Base trait for font styles
+    *
+    * @param font The font descriptor for the object, can be passed as a string of form "24px FontName" or "FontName"
+    *             or as an object with explicit name/size properties.
+    */
+  @ScalaJSDefined
+  class Style(var font: String | FontDef) extends js.Object {
+    /** Alignment for multiline text ('left', 'center' or 'right'), does not affect single line text */
+    var align: String = "left"
 
-  object Style {
-    /** Creates a font style
-      *
-      * @param font The font descriptor for the object, passed as a string of form "24px FontName" or "FontName"
-      * @param align Alignment for multiline text ('left', 'center' or 'right'), does not affect single line text
-      * @param tint The tint color
-      * @return A font style with these parameters
-      */
-    def apply(font: String,
-              align: String = "left",
-              tint: Int = 0xFFFFFF): Style = {
-      js.Dynamic.literal(font = font, align = align, tint = tint).asInstanceOf[Style]
-    }
+    /** The tint color */
+    var tint: Int = 0xFFFFFF
   }
 
+  /**
+   * Font properties
+   * @param name The bitmap font id
+   * @param size The size of the font in pixels, e.g. 24
+   */
+  @ScalaJSDefined
+  class FontDef(name: String, size: Int) extends js.Object {}
+
 }
+

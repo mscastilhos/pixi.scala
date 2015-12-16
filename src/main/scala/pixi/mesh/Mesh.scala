@@ -15,6 +15,7 @@ import scala.scalajs.js.typedarray.{Uint16Array, Float32Array}
   * @param _indices if you want to specify the indices
   * @param _drawMode the drawMode, can be any of the Mesh.DRAW_MODES consts
   */
+@js.native
 @JSName("PIXI.mesh.Mesh")
 class Mesh(_texture: Texture,
            _vertices: Float32Array = null,

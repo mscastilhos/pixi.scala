@@ -3,9 +3,9 @@ package pixi.demos
 import org.scalajs.dom
 import pixi.core.{Sprite, Texture, Container, Renderer}
 import pixi.interaction.{InteractionData, EventData}
-import pixi.scalajs.ObjectTagView.TaggedObject
 
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js
+import scala.scalajs.js.annotation.{ScalaJSDefined, JSExport}
 import scala.util.Random
 
 @JSExport("Dragging")
@@ -25,9 +25,17 @@ object Dragging {
 
   dom.requestAnimationFrame(animate _)
 
+  @ScalaJSDefined
+  trait DragData extends js.Object {
+    // Saved event data
+    var data: InteractionData
+    // Is dragging?
+    var dragging: Boolean
+  }
+
   def createBunny(x: Int, y: Int): Unit = {
     // create our little bunny friend..
-    val bunny = new Sprite(texture)
+    val bunny = new Sprite(texture).asInstanceOf[Sprite with DragData]
 
     // enable the bunny to be interactive... this will allow it to respond to mouse and touch events
     bunny.interactive = true
@@ -54,6 +62,8 @@ object Dragging {
     // events for drag move
     bunny.on("mousemove", onDragMove _)
     bunny.on("touchmove", onDragMove _)
+    // Not dragging
+    bunny.dragging = false
 
     // move the sprite to its designated position
     bunny.position.x = x
@@ -72,29 +82,29 @@ object Dragging {
     renderer.render(stage)
   }
 
-  def onDragStart(bunny: Sprite, event: EventData): Unit = {
+  def onDragStart(bunny: Sprite with DragData, event: EventData): Unit = {
     // store a reference to the data
     // the reason for this is because of multitouch
     // we want to track the movement of this particular touch
 
-    bunny.setTag("data", event.data)
+    bunny.data = event.data
     bunny.alpha = 0.5
-    bunny.setTag("dragging", true)
+    bunny.dragging = true
   }
 
 
-  def onDragEnd(bunny: Sprite, event: EventData): Unit = {
+  def onDragEnd(bunny: Sprite with DragData, event: EventData): Unit = {
     bunny.alpha = 1
 
-    bunny.setTag("dragging", false)
+    bunny.dragging = false
 
     // set the interaction data to null
-    bunny.setTag("data", null)
+    bunny.data = null
   }
 
-  def onDragMove(bunny: Sprite, event: EventData): Unit = {
-    if (bunny.getTag("dragging", false)) {
-      val data = bunny.getTagRaw("data").asInstanceOf[InteractionData]
+  def onDragMove(bunny: Sprite with DragData, event: EventData): Unit = {
+    if (bunny.dragging) {
+      val data = bunny.data
       val newPosition = data.getLocalPosition(bunny.parent)
       bunny.position.x = newPosition.x
       bunny.position.y = newPosition.y

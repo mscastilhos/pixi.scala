@@ -8,7 +8,7 @@ import scala.scalajs.js.annotation.JSExport
 
 @JSExport("Video")
 object VideoDemo {
-  val renderer = Renderer.autoDetect(800, 600, Options(transparent = true))
+  val renderer = Renderer.autoDetect(800, 600, new Options{transparent = true})
   dom.document.body.appendChild(renderer.view)
 
   // create the root of the scene graph

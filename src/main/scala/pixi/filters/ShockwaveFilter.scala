@@ -10,6 +10,7 @@ import scala.scalajs.js.annotation.JSName
   * with a new set of RGBA color and alpha values. It's pretty powerful!
   * @constructor
   */
+@js.native
 @JSName("PIXI.filters.ShockwaveFilter")
 class ShockwaveFilter() extends Filter {
   /** Sets the center of the shockwave in normalized screen coords. That is (0,0) is the top-left and (1,1) is the

@@ -8,6 +8,7 @@ import scala.scalajs.js.annotation.JSName
 /** A TiltShift Filter. Manages the pass of both a TiltShiftXFilter and TiltShiftYFilter.
   * @constructor
   */
+@js.native
 @JSName("PIXI.filters.TiltShiftFilter")
 class TiltShiftFilter() extends Filter {
   /** The strength of the blur. */

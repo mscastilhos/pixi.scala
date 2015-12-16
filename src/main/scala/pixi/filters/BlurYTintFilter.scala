@@ -8,6 +8,7 @@ import scala.scalajs.js.annotation.JSName
 /** The BlurYTintFilter applies a vertical Gaussian blur to an object.
   * @constructor
   */
+@js.native
 @JSName("PIXI.filters.BlurYTintFilter")
 class BlurYTintFilter() extends Filter {
   /** Sets the strength of both the blur. */

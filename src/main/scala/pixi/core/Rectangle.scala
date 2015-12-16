@@ -12,6 +12,7 @@ import scala.scalajs.js.annotation.JSName
   * @param _width The overall width of this rectangle
   * @param _height The overall height of this rectangle
   */
+@js.native
 @JSName("PIXI.Rectangle")
 class Rectangle(_x: Double, _y: Double, _width: Double, _height: Double) extends Shape {
   /** The X coordinate of the upper-left corner of the rectangle */

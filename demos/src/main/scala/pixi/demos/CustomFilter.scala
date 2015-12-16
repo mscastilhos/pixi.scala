@@ -7,7 +7,7 @@ import pixi.core.{Sprite, Container, Renderer}
 import pixi.loaders.{Loader, Resource}
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{ScalaJSDefined, JSExport}
 
 @JSExport("CustomFilterDemo")
 object CustomFilter {
@@ -16,6 +16,10 @@ object CustomFilter {
 
   // create the root of the scene graph
   val stage = new Container
+
+  @ScalaJSDefined
+  class CustomFilter(fragmentSource: String)
+    extends Filter(null, fragmentSource, js.Dictionary("customUniform" -> new Uniform("1f", 0)))
 
   val bg = Sprite.fromImage("_assets/bkg-grass.jpg")
   bg.scale.set(1.3, 1)
@@ -27,15 +31,13 @@ object CustomFilter {
 
   pixi.loader.load()
 
-  var filter: Filter = _
+  var filter: CustomFilter = _
 
-  def onLoaded(loader: Loader, res: js.Dictionary[Resource]) {
+  def onLoaded(loader: Loader) {
 
-    val fragmentSrc = res.get("shader").get.data.asInstanceOf[String]
+    val fragmentSrc = loader.resources.get("shader").get.data.asInstanceOf[String]
 
-    val customUniform = new Uniform("1f", 0)
-
-    filter = Filter(fragmentSrc = fragmentSrc, uniforms = js.Dictionary("customUniform" -> customUniform))
+    filter = new CustomFilter(fragmentSrc)
 
     bg.filters = js.Array(filter)
 

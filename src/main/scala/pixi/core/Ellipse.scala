@@ -10,6 +10,7 @@ import scala.scalajs.js.annotation.JSName
   * @param _width The half width of this ellipse
   * @param _height The half height of this ellipse
   */
+@js.native
 @JSName("PIXI.Ellipse")
 class Ellipse(_x: Double, _y: Double, _width: Double, _height: Double) extends Shape {
   /** The X coordinate of the center of the ellipse */

@@ -11,6 +11,7 @@ import scala.scalajs.js.annotation.JSName
   * @constructor
   * @param texture The texture used for the normal map, must be power of 2 texture at the moment
   */
+@js.native
 @JSName("PIXI.filters.NormalMapFilter")
 class NormalMapFilter(texture: Texture) extends Filter {
   /** Sets the map dimensions uniforms when the texture becomes available.

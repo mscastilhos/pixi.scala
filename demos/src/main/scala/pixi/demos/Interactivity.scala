@@ -2,10 +2,10 @@ package pixi.demos
 
 import org.scalajs.dom
 import pixi.core.{Texture, Sprite, Container, Renderer}
-import pixi.scalajs.ObjectTagView.TaggedObject
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.UndefOr
+import scala.scalajs.js.annotation.{ScalaJSDefined, JSExport}
 
 
 @JSExport("Interactivity")
@@ -37,16 +37,11 @@ object Interactivity {
     685, 445
   )
 
-  /*
-  val buttons = [];
-
-
-
-  val noop = function () {
-    console.log('click');
-  };
-
-*/
+  @ScalaJSDefined
+  trait InterState extends js.Object {
+    var isDown: UndefOr[Boolean]
+    var isOver: UndefOr[Boolean]
+  }
 
   val buttons = for (i <- 0 until 5) yield {
     val button = new Sprite(textureButton)
@@ -60,31 +55,33 @@ object Interactivity {
     // make the button interactive...
     button.interactive = true
 
+    // view those extra fields in the button
+    val asData = button.asInstanceOf[InterState]
 
     button.on("mousedown", "touchstart") {
       // set the mousedown and touchstart callback..
-      button.setTag("isdown", true)
+      asData.isDown = true
       button.texture = textureButtonDown
       button.alpha = 1
     }.on("mouseup", "touchend", "mouseupoutside", "touchendoutside") {
       // set the mouseup and touchend callback...
-      button.setTag("isdown", false)
-      if (button.getTag("isOver", false)) {
+      asData.isDown = false
+      if (asData.isOver getOrElse false) {
         button.texture = textureButtonOver
       } else {
         button.texture = textureButton
       }
     }.on("mouseover") {
       // set the mouseover callback...
-      button.setTag("isOver", true)
-      if (!button.getTag("isdown", false)) {
+      asData.isOver = true
+      if (!asData.isDown.getOrElse(false)) {
         button.texture = textureButtonOver
       }
     }.on("mouseout") {
       // set the mouseout callback...
-      button.setTag("isOver", true)
+      asData.isOver = true
 
-      if (!button.getTag("isdown", false)) {
+      if (!asData.isDown.getOrElse(false)) {
         button.texture = textureButton
       }
     }
@@ -114,9 +111,9 @@ object Interactivity {
 
   animate()
 
-  def animate (d: Double = 0) {
+  def animate(d: Double = 0) {
     // render the stage
-    renderer.render(stage);
+    renderer.render(stage)
 
     dom.requestAnimationFrame(animate _)
   }

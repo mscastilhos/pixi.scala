@@ -30,6 +30,7 @@ import scala.scalajs.js.annotation.JSName
   * @param source
   * @param scaleMode See {@link SCALE_MODES} for possible values
   */
+@js.native
 @JSName("PIXI.VideoBaseTexture")
 class VideoBaseTexture(source: HTMLVideoElement, scaleMode: Int) extends BaseTexture(source) {
   /** Should the base texture automatically update itself, set to true by default */

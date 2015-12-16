@@ -9,6 +9,7 @@ import scala.scalajs.js.annotation.JSName
 /** An RGB Split Filter.
   * @constructor
   */
+@js.native
 @JSName("PIXI.filters.RGBSplitFilter")
 class RGBSplitFilter() extends Filter {
   /** Red channel offset. */

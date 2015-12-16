@@ -8,6 +8,7 @@ import scala.scalajs.js.annotation.JSName
 /** The BlurXFilter applies a horizontal Gaussian blur to an object.
   * @constructor
   */
+@js.native
 @JSName("PIXI.filters.BlurXFilter")
 class BlurXFilter() extends Filter {
   /** Sets the number of passes for blur. More passes means higher quaility bluring. */

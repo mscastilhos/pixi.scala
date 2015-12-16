@@ -12,6 +12,7 @@ import scala.scalajs.js.annotation.JSName
   * | 0 | 0 | 1 |
   * @constructor
   */
+@js.native
 @JSName("PIXI.Matrix")
 class Matrix() extends js.Object {
   val a: Double = js.native

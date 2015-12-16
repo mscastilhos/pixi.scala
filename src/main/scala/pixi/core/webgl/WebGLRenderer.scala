@@ -12,13 +12,17 @@ import scala.scalajs.js.annotation.JSName
   * should be used for browsers that support webGL. This Render works by automatically managing webGLBatchs.
   * So no need for Sprite Batches or Sprite Clouds.
   * Don't forget to add the view to your DOM or you will not see anything :)
-  * @constructor
-  * @param _width the width of the canvas view
-  * @param _height the height of the canvas view
-  * @param _options The optional renderer parameters
   */
+@js.native
 @JSName("PIXI.WebGLRenderer")
-class WebGLRenderer(_width: Int = 0, _height: Int = 0, _options: Options = Options.DEFAULT) extends Renderer {
+class WebGLRenderer protected[pixi]() extends Renderer {
+
+  /**
+   * @param width the width of the canvas view
+   * @param height the height of the canvas view
+   * @param options The optional renderer parameters
+   */
+  def this(width: Int = 0, height: Int = 0, options: Options = new Options) = this()
 
   type StencilManager = WebGLMaskManager
 

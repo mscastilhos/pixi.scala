@@ -8,7 +8,9 @@ import scala.scalajs.js.annotation.JSExport
 
 @JSExport("Masking")
 object Masking {
-  val renderer = Renderer.autoDetect(800, 600, Options(antialias = true))
+  val renderer = Renderer.autoDetect(800, 600, new Options {
+    antialias = true
+  })
   dom.document.body.appendChild(renderer.view)
 
   // create the root of the scene graph
@@ -77,14 +79,17 @@ object Masking {
     }
   }
 
-  val help = new Text("Click to turn masking on / off.", Text.Style(font = "bold 12pt Arial", fill = "white"))
+  val help = new Text("Click to turn masking on / off.", new Text.Style {
+    font = "bold 12pt Arial"
+    fill = "white"
+  })
   help.position.y = renderer.height - 26
   help.position.x = 10
   stage.addChild(help)
 
   animate()
 
-  def animate (d: Double = 0) {
+  def animate(d: Double = 0) {
     bg.rotation += 0.01
     bgFront.rotation -= 0.01
 

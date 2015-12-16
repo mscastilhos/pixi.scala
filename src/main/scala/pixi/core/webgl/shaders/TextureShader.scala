@@ -13,6 +13,7 @@ import scala.scalajs.js.annotation.JSName
  * @param customUniforms Custom uniforms to use to augment the built-in ones.
  * @param customAttributes Custom TextureShader attributes
  */
+@js.native
 @JSName("PIXI.TextureShader")
 class TextureShader(shaderManager: ShaderManager,
                     vertexSrc: js.Array[String],

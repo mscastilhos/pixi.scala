@@ -9,6 +9,7 @@ import scala.scalajs.js.annotation.JSName
   * The strength of the blur can be set for x- and y-axis separately.
   * @constructor
   */
+@js.native
 @JSName("PIXI.filters.DropShadowFilter")
 class DropShadowFilter() extends Filter {
   /** Sets the strength of both the blurX and blurY properties simultaneously */

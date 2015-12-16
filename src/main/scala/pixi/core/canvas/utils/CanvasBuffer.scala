@@ -5,13 +5,19 @@ import org.scalajs.dom.raw.{CanvasRenderingContext2D, HTMLCanvasElement}
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 
-/** Creates a Canvas element of the given size.
-  * @constructor
-  * @param _width the width for the newly created canvas
-  * @param _height the height for the newly created canvas
-  */
+
+@js.native
 @JSName("PIXI.CanvasBuffer")
-class CanvasBuffer(_width: Double, _height: Double) extends js.Object {
+/** Manages canvas */
+class CanvasBuffer protected[pixi]() extends js.Object {
+
+  /** Creates a Canvas element of the given size.
+    * @constructor
+    * @param width the width for the newly created canvas
+    * @param height the height for the newly created canvas
+    */
+  def this(width: Double, height: Double) = this()
+
   /** The Canvas object that belongs to this CanvasBuffer. */
   var canvas: HTMLCanvasElement = js.native
 

@@ -9,6 +9,7 @@ import scala.scalajs.js.annotation.JSName
 /** Utility methods for Sprite/Texture tinting.
   * @constructor
   */
+@js.native
 @JSName("PIXI.CanvasTinter")
 object CanvasTinter extends js.GlobalScope {
   /** Basically this method just needs a sprite and a color and tints the sprite with the given color.

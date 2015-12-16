@@ -65,7 +65,10 @@ object FilterDemo {
     }
   }
 
-  val help = new Text("Click to turn filters on / off.", Style(font = "bold 12pt Arial", fill = "white"))
+  val help = new Text("Click to turn filters on / off.", new Style {
+    font = "bold 12pt Arial"
+    fill = "white"
+  })
 
   help.position.y = renderer.height - 25
   help.position.x = 10

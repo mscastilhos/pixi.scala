@@ -14,6 +14,7 @@ import scala.scalajs.js.typedarray.ArrayBuffer
  * @constructor
  * @param renderer The renderer this manager works for.
  */
+@js.native
 @JSName("PIXI.FilterManager")
 class FilterManager(renderer: WebGLRenderer) extends WebGLManager {
 

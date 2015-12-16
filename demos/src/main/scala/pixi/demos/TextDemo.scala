@@ -11,7 +11,7 @@ import scala.scalajs.js.annotation.JSExport
  */
 @JSExport("TextDemo")
 object TextDemo {
-  val renderer = Renderer.autoDetect(800, 600, Options(backgroundColor = 0x1099bb))
+  val renderer = Renderer.autoDetect(800, 600, new Options {backgroundColor = 0x1099bb})
   document.body.appendChild(renderer.view)
 
   // create the root of the scene graph
@@ -23,18 +23,18 @@ object TextDemo {
 
   stage.addChild(basicText)
 
-  val style = Text.Style(
-    font = "36px Arial bold italic",
-    fill = "#F7EDCA",
-    stroke = "#4a1850",
-    strokeThickness = 5,
-    dropShadow = true,
-    dropShadowColor = "#000000",
-    dropShadowAngle = Math.PI / 6,
-    dropShadowDistance = 6,
-    wordWrap = true,
-    wordWrapWidth = 440
-  )
+  val style = new Text.Style {
+    font = "bold italic 36px Arial"
+    fill = "#F7EDCA"
+    stroke = "#4a1850"
+    strokeThickness = 5.0
+    dropShadow = true
+    dropShadowColor = "#000000"
+    dropShadowAngle = Math.PI / 6
+    dropShadowDistance = 6.0
+    wordWrap = true
+    wordWrapWidth = 440.0
+  }
 
   val richText = new Text("Rich text with a lot of options and across multiple lines", style)
   richText.x = 30

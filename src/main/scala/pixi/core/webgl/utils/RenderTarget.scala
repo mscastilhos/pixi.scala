@@ -15,6 +15,7 @@ import scala.scalajs.js.annotation.JSName
  * @param _resolution the current resolution
  * @param _root Whether this object is the root element or not
  */
+@js.native
 @JSName("PIXI.RenderTarget")
 class RenderTarget(_gl: WebGLRenderingContext,
                    _width: Int,

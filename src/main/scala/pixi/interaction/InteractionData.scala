@@ -7,6 +7,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 
 /** Holds all information related to an Interaction event */
+@js.native
 @JSName("PIXI.interaction.InteractionData")
 trait InteractionData extends js.Object {
   /** This point stores the global coords of where the touch/mouse event happened */

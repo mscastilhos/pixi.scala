@@ -11,6 +11,7 @@ import scala.scalajs.js.typedarray.Float32Array
   * @constructor
   * @param gl The gl context for this quad to use.
   */
+@js.native
 @JSName("PIXI.Quad")
 class Quad(gl: WebGLRenderingContext) extends js.Object {
   /** An array of vertices */

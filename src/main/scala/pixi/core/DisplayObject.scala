@@ -15,6 +15,7 @@ import scala.scalajs.js.annotation.JSName
   * This is an abstract class and should not be used on its own rather it should be extended.
   * @constructor
   */
+@js.native
 @JSName("PIXI.DisplayObject")
 class DisplayObject() extends EventEmitter with InteractiveTarget {
   /** The coordinate of the object relative to the local coordinates of the parent. */

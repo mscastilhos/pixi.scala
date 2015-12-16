@@ -8,6 +8,7 @@ import scala.scalajs.js.annotation.JSName
 /** A Noise effect filter.
   * @constructor
   */
+@js.native
 @JSName("PIXI.filters.NoiseFilter")
 class NoiseFilter() extends Filter {
   /** The amount of noise to apply. */

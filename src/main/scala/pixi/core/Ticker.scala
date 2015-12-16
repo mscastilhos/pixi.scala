@@ -10,6 +10,7 @@ import scala.scalajs.js.annotation.JSName
   * e.g. When the ticker is started and the emitter has listeners.
   * @constructor
   */
+@js.native
 @JSName("PIXI.ticker.Ticker")
 class Ticker() extends js.Object {
   /** Whether or not this ticker should invoke the method {@link PIXI.ticker.Ticker#start} automatically when a

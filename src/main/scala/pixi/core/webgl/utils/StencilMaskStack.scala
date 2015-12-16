@@ -9,6 +9,7 @@ import scala.scalajs.js.annotation.JSName
   * @constructor
   * @param renderer The renderer this manager works for.
   */
+@js.native
 @JSName("PIXI.StencilMaskStack")
 class StencilMaskStack(renderer: WebGLRenderer) extends js.Object {
   /** The actual stack */

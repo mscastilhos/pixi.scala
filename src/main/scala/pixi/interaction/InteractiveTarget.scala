@@ -6,6 +6,7 @@ import scala.scalajs.js
  * Property values of interactive objects
  * @author Marcelo Serra Castilhos
  */
+@js.native
 trait InteractiveTarget extends js.Object {
 
   var interactive: Boolean = js.native

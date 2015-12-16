@@ -9,7 +9,7 @@ import scala.util.Random
 
 @JSExport("GraphicsDemo2")
 object GraphicsDemo2 {
-  val renderer = Renderer.autoDetect(800, 600, Options(antialias = true))
+  val renderer = Renderer.autoDetect(800, 600, new Options {antialias = true})
   dom.document.body.appendChild(renderer.view)
 
   // create the root of the scene graph

@@ -9,6 +9,7 @@ import scala.scalajs.js.annotation.JSName
   * @param _y The Y coordinate of the center of this circle
   * @param _radius The radius of the circle
   */
+@js.native
 @JSName("PIXI.Circle")
 class Circle(_x: Double, _y: Double, _radius: Double) extends Shape {
   /** The X coordinate of the center of this circle */

@@ -16,6 +16,7 @@ import scala.scalajs.js.annotation.JSName
   * @param texture The texture to use on the rope.
   * @param points An array of Point objects to construct this rope.
   */
+@js.native
 @JSName("PIXI.mesh.Rope")
 class Rope(texture: Texture, points: js.Array[Point]) extends Mesh(texture) {
 

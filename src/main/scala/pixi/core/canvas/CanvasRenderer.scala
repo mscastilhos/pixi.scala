@@ -5,19 +5,24 @@ import pixi.core.Renderer.Options
 import pixi.core.Renderer
 
 import scala.scalajs.js
+import scala.scalajs.js.UndefOr
 import scala.scalajs.js.annotation.JSName
 
 /** The CanvasRenderer draws the scene and all its content onto a 2d canvas. This renderer should be used for browsers that do not support webGL.
   * Don't forget to add the CanvasRenderer.view to your DOM or you will not see anything :)
-  * @constructor
-  * @param width the width of the canvas view
-  * @param height the height of the canvas view
-  * @param options The optional renderer parameters
   */
+@js.native
 @JSName("PIXI.CanvasRenderer")
-class CanvasRenderer(width: Int = 800,
-                     height: Int = 600,
-                     options: Options = Options.DEFAULT) extends Renderer {
+class CanvasRenderer protected[pixi]() extends Renderer {
+
+  /**
+   * @param width the width of the canvas view
+   * @param height the height of the canvas view
+   * @param options The optional renderer parameters
+   */
+  def this(width: UndefOr[Int] = js.undefined,
+           height: UndefOr[Int] = js.undefined,
+           options: UndefOr[Options] = js.undefined) = this()
 
   /** The canvas 2d context that everything is drawn with. */
   var context: CanvasRenderingContext2D = js.native

@@ -3,24 +3,27 @@ package pixi.core
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 
-/** A GraphicsData object.
-  * @constructor
-  * @param _lineWidth the width of the line to draw
-  * @param _lineColor the color of the line to draw
-  * @param _lineAlpha the alpha of the line to draw
-  * @param _fillColor the color of the fill
-  * @param _fillAlpha the alpha of the fill
-  * @param _fill whether or not the shape is filled with a colour
-  * @param _shape The shape object to draw.
-  */
+/** A GraphicsData object. */
+@js.native
 @JSName("PIXI.GraphicsData")
-class GraphicsData(_lineWidth: Double,
-                   _lineColor: Double,
-                   _lineAlpha: Double,
-                   _fillColor: Double,
-                   _fillAlpha: Double,
-                   _fill: Boolean,
-                   _shape: Shape) extends js.Object {
+class GraphicsData protected[pixi]() extends js.Object {
+  /**
+   * @param lineWidth the width of the line to draw
+   * @param lineColor the color of the line to draw
+   * @param lineAlpha the alpha of the line to draw
+   * @param fillColor the color of the fill
+   * @param fillAlpha the alpha of the fill
+   * @param fill whether or not the shape is filled with a colour
+   * @param shape The shape object to draw.
+   */
+  def this(lineWidth: Double,
+           lineColor: Double,
+           lineAlpha: Double,
+           fillColor: Double,
+           fillAlpha: Double,
+           fill: Boolean,
+           shape: Shape) = this()
+
   /** the width of the line to draw */
   val lineWidth: Double = js.native
 

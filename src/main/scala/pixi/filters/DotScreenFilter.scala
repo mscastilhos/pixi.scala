@@ -9,6 +9,7 @@ import scala.scalajs.js.annotation.JSName
   * black and white halftone dots like an old printer.
   * @constructor
   */
+@js.native
 @JSName("PIXI.filters.DotScreenFilter")
 class DotScreenFilter() extends Filter {
   /** The scale of the effect. */

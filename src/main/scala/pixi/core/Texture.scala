@@ -19,6 +19,7 @@ import scala.scalajs.js.annotation.JSName
   * val sprite2 = new Sprite(texture);
   * }}}
   */
+@js.native
 @JSName("PIXI.Texture")
 trait Texture extends EventEmitter {
   /** Does this Texture have any frame data assigned to it? */

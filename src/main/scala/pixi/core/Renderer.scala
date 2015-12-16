@@ -5,12 +5,14 @@ import pixi.Env
 import pixi.eventemitter3.EventEmitter
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSName
+import scala.scalajs.js.UndefOr
+import scala.scalajs.js.annotation.{ScalaJSDefined, JSName}
 
 /** The CanvasRenderer draws the scene and all its content onto a 2d canvas. This renderer should be used for browsers that do not support webGL.
   * Don't forget to add the CanvasRenderer.view to your DOM or you will not see anything :)
   * @constructor
   */
+@js.native
 @JSName("PIXI.SystemRenderer")
 trait Renderer extends EventEmitter {
 
@@ -82,77 +84,26 @@ trait Renderer extends EventEmitter {
 object Renderer {
 
   /** Renderer options */
-  trait Options extends js.Object {
+  @ScalaJSDefined
+  class Options extends js.Object {
     /** the canvas to use as a view */
-    var view: HTMLCanvasElement = js.native
-
+    var view: UndefOr[HTMLCanvasElement] = js.undefined
     /** If the render view is transparent */
-    var transparent: Boolean = js.native
-
+    var transparent: UndefOr[Boolean] = js.undefined
     /** If the render view is automatically resized */
-    var autoResize: Boolean = js.native
-
+    var autoResize: UndefOr[Boolean] = js.undefined
     /** sets antialias (only applicable in chrome at the moment) */
-    var antialias: Boolean = js.native
-
+    var antialias: UndefOr[Boolean] = js.undefined
     /** forces FXAA antialiasing to be used over native. FXAA is faster, but may not always look as great */
-    var forceFXAA: Boolean = js.native
-
+    var forceFXAA: UndefOr[Boolean] = js.undefined
     /** the resolution of the renderer retina would be 2 */
-    var resolution: Double = js.native
-
+    var resolution: UndefOr[Double] = js.undefined
     /** The background color */
-    var backgroundColor: Int = js.native
-
+    var backgroundColor: UndefOr[Int] = js.undefined
     /** This sets if the CanvasRenderer will clear the canvas or not before the new render pass. */
-    var clearBeforeRender: Boolean = js.native
-
+    var clearBeforeRender: UndefOr[Boolean] = js.undefined
     /** enables drawing buffer preservation, enable this if you need to call toDataUrl on the webgl context. */
-    var preserveDrawingBuffer: Boolean = js.native
-  }
-
-  object Options {
-    /** The options of the renderer
-      *
-      * @param view the canvas to use as a view, optional
-      * @param transparent If the render view is transparent, default false
-      * @param autoResize If the render view is automatically resized, default false
-      * @param antialias sets antialias (only applicable in chrome at the moment)
-      * @param forceFXAA forces FXAA antialiasing to be used over native. FXAA is faster, but may not always look as great
-      * @param resolution the resolution of the renderer retina would be 2
-      * @param backgroundColor The background color
-      * @param clearBeforeRender This sets if the CanvasRenderer will clear the canvas or not before the new render pass.
-      * @param preserveDrawingBuffer enables drawing buffer preservation, enable this if you need to call toDataUrl on
-      *                              the webgl context.
-      * @return A JavaScript object with the renderer options
-      */
-    def apply(view: HTMLCanvasElement = null,
-              transparent: Boolean = false,
-              autoResize: Boolean = false,
-              antialias: Boolean = false,
-              forceFXAA: Boolean = false,
-              resolution: Double = 1,
-              backgroundColor: Int = 0x000000,
-              clearBeforeRender: Boolean = true,
-              preserveDrawingBuffer: Boolean = false): Options = {
-      val opt: Options = js.Dynamic.literal(
-        transparent = transparent,
-        autoResize = autoResize,
-        antialias = antialias,
-        forceFXAA = forceFXAA,
-        resolution = resolution,
-        backgroundColor = backgroundColor,
-        clearBeforeRender = clearBeforeRender,
-        preserveDrawingBuffer = preserveDrawingBuffer).asInstanceOf[Options]
-
-      if (view != null) {
-        opt.view = view
-      }
-      opt
-    }
-
-    /** Default renderer options */
-    val DEFAULT = apply()
+    var preserveDrawingBuffer: UndefOr[Boolean] = js.undefined
   }
 
   /**
@@ -170,7 +121,7 @@ object Renderer {
   @inline
   def autoDetect(width: Int = 800,
                  height: Int = 600,
-                 options: Options = Options.DEFAULT,
+                 options: Options = new Options,
                  noWebGL: Boolean = false): Renderer = {
     Env.PIXI.autoDetectRenderer(width, height, options, noWebGL).asInstanceOf[Renderer]
   }

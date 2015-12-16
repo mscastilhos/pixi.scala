@@ -17,13 +17,13 @@ object ParticleContainerDemo {
   // create the root of the scene graph
   val stage = new Container
 
-  val sprites = new ParticleContainer(10000, Properties(
-    scale = true,
-    position = true,
-    rotation = true,
-    uvs = true,
+  val sprites = new ParticleContainer(10000, new Properties {
+    scale = true
+    position = true
+    rotation = true
+    uvs = true
     alpha = true
-  ))
+  })
 
   stage.addChild(sprites);
 

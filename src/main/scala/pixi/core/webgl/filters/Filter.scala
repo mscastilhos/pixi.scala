@@ -6,25 +6,30 @@ import pixi.core.webgl.filters.Filter.Uniform
 import pixi.core.webgl.utils.RenderTarget
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSExportAll, JSName}
+import scala.scalajs.js.`|`
+import scala.scalajs.js.annotation.{JSName, ScalaJSDefined}
 
 /** This is the base class for creating a PIXI filter. Currently only WebGL supports filters.
   * If you want to make a custom filter this should be your base class.
   */
+@js.native
 @JSName("PIXI.AbstractFilter")
-trait Filter extends js.Object {
+class Filter protected[pixi]() extends js.Object {
+
+  /** This is the base class for creating a PIXI filter. Currently only WebGL supports filters. If you want to make a
+    * custom filter this should be your base class.
+    *
+    * @param vertexSrc The vertex shader source as an array of strings.
+    * @param fragmentSrc The fragment shader source as an array of strings.
+    * @param uniforms An object containing the uniforms for this filter.
+    */
+  def this(vertexSrc: String | js.Array[String], fragmentSrc: String | js.Array[String], uniforms: js.Dictionary[Uniform]) = this()
 
   /** The extra padding that the filter might need */
   var padding: Double = js.native
 
   /** The uniforms as an object */
   var uniforms: js.Dictionary[Uniform] = js.native
-
-  /**
-   * Grabs a shader from the current renderer
-   * @param renderer {WebGLRenderer} The renderer to retrieve the shader from
-   */
-  def getShader(renderer: WebGLRenderer): Unit = js.native
 
   /**
    * Applies the filter
@@ -35,13 +40,16 @@ trait Filter extends js.Object {
    */
   def applyFilter(renderer: WebGLRenderer, input: RenderTarget, output: RenderTarget, clear: Boolean): Unit = js.native
 
-  /** Syncs a uniform between the class object and the shaders.
-    *
-    */
+  /**
+   * Grabs a shader from the current renderer
+   * @param renderer {WebGLRenderer} The renderer to retrieve the shader from
+   */
+  def getShader(renderer: WebGLRenderer): Unit = js.native
+
+  /** Syncs a uniform between the class object and the shaders. */
   def syncUniform(): Unit = js.native
 }
 
-// TODO: Allow defining filters in Scala
 
 object Filter {
   /** Creates a filter
@@ -55,8 +63,8 @@ object Filter {
     js.Dynamic.newInstance(Env.PIXI.AbstractFilter)(vertexSrc, fragmentSrc, uniforms).asInstanceOf[Filter]
   }
 
-  @JSExportAll
-  class Uniform(var `type`: String, var value: js.Any) {
+  @ScalaJSDefined
+  class Uniform(var `type`: String, var value: js.Any) extends js.Object {
 
     @inline
     def get[T]: T = value.asInstanceOf[T]
@@ -66,4 +74,5 @@ object Filter {
       this.value = value.asInstanceOf[js.Any]
     }
   }
+
 }

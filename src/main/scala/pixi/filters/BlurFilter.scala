@@ -9,8 +9,9 @@ import scala.scalajs.js.annotation.JSName
   * The strength of the blur can be set for x- and y-axis separately.
   * @constructor
   */
+@js.native
 @JSName("PIXI.filters.BlurFilter")
-class BlurFilter() extends Filter {
+class BlurFilter() extends Filter() {
   /** Sets the strength of both the blurX and blurY properties simultaneously */
   var blur: Double = js.native
 

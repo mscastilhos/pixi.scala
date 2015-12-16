@@ -10,6 +10,7 @@ import scala.scalajs.js.annotation.JSName
  *                `new PIXI.Polygon(new PIXI.Point(), new PIXI.Point(), ...)`, or the arguments passed can be flat x,y
  *                values e.g. `new Polygon(x,y, x,y, x,y, ...)` where `x` and `y` are Numbers.
  */
+@js.native
 @JSName("PIXI.Polygon")
 class Polygon(_points: js.Object*) extends Shape {
   /** An array of the points of this polygon */

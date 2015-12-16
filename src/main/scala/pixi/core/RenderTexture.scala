@@ -40,18 +40,23 @@ import scala.scalajs.js.typedarray.Uint8ClampedArray
   * renderTexture.render(doc);  // Renders to center of renderTexture
   * }}}
   * @constructor
-  * @param _renderer The renderer used for this RenderTexture
-  * @param _width The width of the render texture
-  * @param _height The height of the render texture
-  * @param _scaleMode See { @link SCALE_MODES} for possible values
-  * @param _resolution The resolution of the texture being generated
+
   */
+@js.native
 @JSName("PIXI.RenderTexture")
-class RenderTexture(_renderer: Renderer,
-                    _width: Double = 100,
-                    _height: Double = 100,
-                    _scaleMode: Double = SCALE_MODES.DEFAULT,
-                    _resolution: Double = 1) extends Texture {
+class RenderTexture protected[pixi] extends Texture {
+  /**
+   * @param renderer The renderer used for this RenderTexture
+   * @param width The width of the render texture
+   * @param height The height of the render texture
+   * @param scaleMode See { @link SCALE_MODES} for possible values
+   * @param resolution The resolution of the texture being generated
+   */
+  def this(renderer: Renderer,
+           width: Double = 100,
+           height: Double = 100,
+           scaleMode: Double = SCALE_MODES.DEFAULT,
+           resolution: Double = 1) = this()
 
   /** The Resolution of the texture. */
   var resolution: Double = js.native

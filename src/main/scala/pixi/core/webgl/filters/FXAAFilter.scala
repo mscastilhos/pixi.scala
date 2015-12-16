@@ -1,5 +1,6 @@
 package pixi.core.webgl.filters
 
+import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 
 /** Basic FXAA implementation based on the code on geeks3d.com with the
@@ -11,5 +12,6 @@ import scala.scalajs.js.annotation.JSName
   * https://github.com/mitsuhiko/webgl-meincraft
   * @constructor
   */
+@js.native
 @JSName("PIXI.FXAAFilter")
 class FXAAFilter() extends Filter

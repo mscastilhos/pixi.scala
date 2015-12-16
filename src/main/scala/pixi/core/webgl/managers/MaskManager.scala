@@ -11,6 +11,7 @@ import scala.scalajs.js.annotation.JSName
  * @constructor
  * @param renderer The renderer this manager works for.
  */
+@js.native
 @JSName("PIXI.MaskManager")
 class MaskManager(renderer: WebGLRenderer) extends js.Object {
   /** Applies the Mask and adds it to the current filter stack.

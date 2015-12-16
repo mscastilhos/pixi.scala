@@ -13,11 +13,16 @@ import scala.scalajs.js.annotation.JSName
   * {{{
   * val sprite = Sprite.fromImage('assets/image.png');
   * }}}
-  * @constructor
-  * @param _texture The texture for this sprite
   */
+@js.native
 @JSName("PIXI.Sprite")
-class Sprite(_texture: Texture) extends Container {
+class Sprite protected[pixi]() extends Container {
+
+  /**
+   * @param texture The texture for this sprite
+   */
+  def this(texture: Texture) = this()
+
   /** The anchor sets the origin point of the texture.
 The default is 0,0 this means the texture's origin is the top left
 Setting the anchor to 0.5,0.5 means the texture's origin is centered

@@ -15,6 +15,7 @@ import scala.scalajs.js.annotation.JSName
   * @param _width Width of the object you are transforming
   * @param _height Height of the object you are transforming
   */
+@js.native
 @JSName("PIXI.filters.ConvolutionFilter")
 class ConvolutionFilter(_matrix: js.Array[Double], _width: Double, _height: Double) extends Filter {
   /** An array of values used for matrix transformation. Specified as a 9 point Array. */

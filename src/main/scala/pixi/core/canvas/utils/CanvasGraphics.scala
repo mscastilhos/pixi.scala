@@ -9,6 +9,7 @@ import scala.scalajs.js.annotation.JSName
 /** A set of functions used by the canvas renderer to draw the primitive graphics data.
   * @constructor
   */
+@js.native
 @JSName("PIXI.CanvasGraphics")
 class CanvasGraphics() extends js.Object {
   /**

@@ -9,6 +9,7 @@ import scala.scalajs.js.annotation.JSName
   * @param _x position of the point on the x axis
   * @param _y position of the point on the y axis
   */
+@js.native
 @JSName("PIXI.Point")
 class Point(_x: Double = 0, _y: Double = 0) extends js.Object {
   /** Position of the point on the x axis */

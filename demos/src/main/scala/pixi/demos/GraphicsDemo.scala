@@ -11,7 +11,7 @@ import scala.scalajs.js.annotation.JSExport
  */
 @JSExport("Graphics")
 object GraphicsDemo {
-  var renderer = Renderer.autoDetect(800, 600, Options(antialias = true))
+  var renderer = Renderer.autoDetect(800, 600, new Options{antialias = true})
   dom.document.body.appendChild(renderer.view)
 
   // create the root of the scene graph

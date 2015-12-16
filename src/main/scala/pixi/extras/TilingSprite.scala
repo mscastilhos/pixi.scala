@@ -13,6 +13,7 @@ import scala.scalajs.js.annotation.JSName
   * @param _width the width of the tiling sprite
   * @param _height the height of the tiling sprite
   */
+@js.native
 @JSName("PIXI.extras.TilingSprite")
 class TilingSprite(_texture: Texture, _width: Double, _height: Double) extends Sprite(_texture) {
   /** The scaling of the image that is being tiled */

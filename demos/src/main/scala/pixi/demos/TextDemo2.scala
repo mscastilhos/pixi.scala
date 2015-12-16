@@ -4,11 +4,9 @@ import org.scalajs.dom
 import org.scalajs.dom.html.Script
 import pixi.core.{Text, Sprite, Container, Renderer}
 import pixi.extras.BitmapText
-import pixi.extras.BitmapText.Style
-import pixi.scalajs.ObjectTagView.TaggedObject
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{ScalaJSDefined, JSExport}
 import scala.scalajs.js.Dynamic.{literal => lit}
 
 @JSExport("TextDemo2")
@@ -19,11 +17,14 @@ object TextDemo2 {
   // create the root of the scene graph
   val stage = new Container
 
+  @ScalaJSDefined
+  trait WebFontConfig extends js.Object {
+    var WebFontConfig: js.Dynamic
+  }
+
   // Load them google fonts before starting...!
-  dom.window.setTag("WebFontConfig",
-    lit(google = lit(families = js.Array("Snippet", "Arvo:700italic", "Podkova:700")),
-      active = () => init()))
-  js.Dynamic.global.console.log(dom.window.getTag("WebFontConfig", lit()))
+  dom.window.asInstanceOf[WebFontConfig].WebFontConfig = lit(google = lit(families = js.Array("Snippet", "Arvo:700italic", "Podkova:700")),
+    active = () => init())
 
   // include the web-font loader script
   loadScript()
@@ -45,7 +46,9 @@ object TextDemo2 {
 
     def onAssetsLoaded() {
       println("XXXXX")
-      val bitmapFontText = new BitmapText("bitmap fonts are \n now supported !", Style(font = "35px Desyrel", align = "right"))
+      val bitmapFontText = new BitmapText("bitmap fonts are \n now supported !", new BitmapText.Style("35px Desyrel") {
+        align = "right"
+      })
       println(bitmapFontText)
 
       bitmapFontText.position.x = 600 - bitmapFontText.textWidth
@@ -60,13 +63,23 @@ object TextDemo2 {
 
     // create some white text using the Snippet webfont
     val textSample = new Text("Pixi.js can has \n multiline text !",
-      Text.Style(font = "35px Snippet", fill = "white", align = "left"))
+      new Text.Style {
+        font = "35px Snippet"
+        fill = "white"
+        align = "left"
+      })
 
     textSample.position.set(20)
 
     // create a text object with a nice stroke
     val spinningText = new Text("'I'm fun !",
-      Text.Style(font = "bold 60px Arial", fill = "#cc00ff", align = "center", stroke = "#FFFFFF", strokeThickness = 6))
+      new Text.Style {
+        font = "bold 60px Arial"
+        fill = "#cc00ff"
+        align = "center"
+        stroke = "#FFFFFF"
+        strokeThickness = 6.0
+      })
 
     // setting the anchor point to 0.5 will center align the text... great for spinning!
     spinningText.anchor.set(0.5)
@@ -75,7 +88,13 @@ object TextDemo2 {
 
     // create a text object that will be updated...
     val countingText = new Text("COUNT 4 EVAR: 0",
-      Text.Style(font = "bold italic 60px Arvo", fill = "#3e1707", align = "center", stroke = "#a4410e", strokeThickness = 7))
+      new Text.Style {
+        font = "bold italic 60px Arvo"
+        fill = "#3e1707"
+        align = "center"
+        stroke = "#a4410e"
+        strokeThickness = 7.0
+      })
 
     countingText.position.x = 310
     countingText.position.y = 320

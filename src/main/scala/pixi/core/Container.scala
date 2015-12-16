@@ -12,6 +12,7 @@ import scala.scalajs.js.annotation.JSName
   * }}}
   * @constructor
   */
+@js.native
 @JSName("PIXI.Container")
 class Container() extends DisplayObject {
   /** The array of children of this container. */
