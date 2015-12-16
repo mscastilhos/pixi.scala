@@ -16,7 +16,11 @@ import scala.scalajs.js.annotation.{ScalaJSDefined, JSName}
 trait Renderer extends EventEmitter {
 
   /** The type of this renderer as a standardised const */
-  var `type`: Int = js.native
+  val `type`: Renderer.Type = js.native
+
+  /** The type of this renderer as a standardised const */
+  @JSName("type")
+  val rendererType: Renderer.Type = js.native
 
   /** The width of the canvas view */
   var width: Int = js.native
@@ -106,23 +110,35 @@ object Renderer {
   }
 
   /**
-   * This helper function will automatically detect which renderer you should be using.
-   * WebGL is the preferred renderer as it is a lot faster. If webGL is not supported by
-   * the browser then this function will return a canvas renderer
-   *
-   * @param width the width of the renderers view
-   * @param height the height of the renderers view
-   * @param options  The optional renderer parameters
-   * @param noWebGL prevents selection of WebGL renderer, even if such is present
-   *
-   * @return  Returns WebGL renderer if available, otherwise CanvasRenderer
-   */
+    * This helper function will automatically detect which renderer you should be using.
+    * WebGL is the preferred renderer as it is a lot faster. If webGL is not supported by
+    * the browser then this function will return a canvas renderer
+    *
+    * @param width the width of the renderers view
+    * @param height the height of the renderers view
+    * @param options  The optional renderer parameters
+    * @param noWebGL prevents selection of WebGL renderer, even if such is present
+    *
+    * @return  Returns WebGL renderer if available, otherwise CanvasRenderer
+    */
   @inline
   def autoDetect(width: Int = 800,
                  height: Int = 600,
                  options: Options = new Options,
                  noWebGL: Boolean = false): Renderer = {
     js.Dynamic.global.PIXI.autoDetectRenderer(width, height, options, noWebGL).asInstanceOf[Renderer]
+  }
+
+  import js.Dynamic.{global => g}
+
+  /** Constant to identify the Renderer Type. */
+  @ScalaJSDefined
+  sealed trait Type extends js.Object
+
+  object Type {
+    val Unknown: Type = g.PIXI.RENDERER_TYPE.UNKNOWN.asInstanceOf[Type]
+    val WebGL: Type = g.PIXI.RENDERER_TYPE.WEBGL.asInstanceOf[Type]
+    val Canvas: Type = g.PIXI.RENDERER_TYPE.CANVAS.asInstanceOf[Type]
   }
 
 }

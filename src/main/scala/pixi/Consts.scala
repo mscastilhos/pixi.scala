@@ -22,12 +22,6 @@ object Consts {
   /** Target frames per millisecond. */
   val TARGET_FPMS: Double = g.PIXI.TARGET_FPMS.asInstanceOf[Double]
 
-  /** Constant to identify the Renderer Type. */
-  object RENDERER_TYPE {
-    val UNKNOWN: Int = g.PIXI.RENDERER_TYPE.UNKNOWN.asInstanceOf[Int]
-    val WEBGL: Int = g.PIXI.RENDERER_TYPE.WEBGL.asInstanceOf[Int]
-    val CANVAS: Int = g.PIXI.RENDERER_TYPE.CANVAS.asInstanceOf[Int]
-  }
 
   /**
    * The scale modes that are supported by pixi.
