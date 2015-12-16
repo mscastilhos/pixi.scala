@@ -3,7 +3,7 @@ package pixi.core.webgl.managers
 import pixi.core.webgl.WebGLRenderer
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSName
+import scala.scalajs.js.annotation.{ScalaJSDefined, JSName}
 
 @js.native
 @JSName("PIXI.BlendModeManager")
@@ -26,6 +26,7 @@ class BlendModeManager protected[pixi]() extends WebGLManager {
   * the NORMAL, ADD, MULTIPLY and SCREEN blend modes. Anything else will silently act like
   * NORMAL.
   */
+@ScalaJSDefined
 sealed trait BlendMode extends js.Object
 object BlendMode {
   import js.Dynamic.{global => g}
