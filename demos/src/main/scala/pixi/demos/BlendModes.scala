@@ -1,8 +1,7 @@
 package pixi.demos
 
 import org.scalajs.dom
-import pixi.core.webgl.managers.BlendMode
-import pixi.core.{Container, Rectangle, Renderer, Sprite}
+import pixi.core._
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSExport, ScalaJSDefined}
