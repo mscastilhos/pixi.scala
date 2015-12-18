@@ -2,11 +2,10 @@ package pixi.demos
 
 import org.scalajs.dom
 import pixi.core.ParticleContainer.Properties
-import pixi.core.webgl.WebGLRenderer
 import pixi.core._
-import pixi.scalajs.UserData.WithUserData
 
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js
+import scala.scalajs.js.annotation.{JSExport, ScalaJSDefined}
 import scala.util.Random
 
 @JSExport("ParticleContainerDemo")
@@ -25,14 +24,21 @@ object ParticleContainerDemo {
     alpha = true
   })
 
-  stage.addChild(sprites);
+  stage.addChild(sprites)
 
 
-  val totalSprites = if (renderer.isInstanceOf[WebGLRenderer]) 10000 else 100
+  val totalSprites = if (renderer.rendererType == Renderer.Type.WebGL) 10000 else 100
 
   // Data associated with the maggots
-  case class MaggotData(var direction: Double, var turningSpeed: Double, var speed: Double, var offset: Double)
+  @ScalaJSDefined
+  trait MaggotData extends js.Object {
+    var direction: Double
+    var turningSpeed: Double
+    var speed: Double
+    var offset: Double
+  }
 
+  // create an array of sprites
   val maggots = for (i <- 0 until totalSprites) yield {
     // create a new Sprite
     val dude = Sprite.fromImage("_assets/tinyMaggot.png")
@@ -51,22 +57,24 @@ object ParticleContainerDemo {
 
     dude.tint = Random.nextInt(0x808080)
 
-    val data = MaggotData(
-      // create a random direction in radians
-      direction = Math.random() * Math.PI * 2,
+    // maggot with associated data
+    val dudeData = dude.asInstanceOf[Sprite with MaggotData]
 
-      // this number will be used to modify the direction of the sprite over time
-      turningSpeed = Math.random() - 0.8,
+    // create a random direction in radians
+    dudeData.direction = Math.random() * Math.PI * 2
 
-      // create a random speed between 0 - 2, and these maggots are slooww
-      speed = (2 + Math.random() * 2) * 0.2,
+    // this number will be used to modify the direction of the sprite over time
+    dudeData.turningSpeed = Math.random() - 0.8
 
-      offset = Math.random() * 100)
+    // create a random speed between 0 - 2, and these maggots are slooww
+    dudeData.speed = (2 + Math.random() * 2) * 0.2
+
+    dudeData.offset = Math.random() * 100
 
     sprites.addChild(dude)
 
-    // finally we yield the dude so it can be easily accessed later
-    dude.withUserData(data)
+    // finally we yield the dude with extra data so it can be easily accessed later
+    dudeData
   }
 
   // create a bounding box box for the little maggots
@@ -84,11 +92,11 @@ object ParticleContainerDemo {
 
     // iterate through the sprites and update their position
     for (dude <- maggots) {
-      dude.scale.y = 0.95 + Math.sin(tick + dude.userData.offset) * 0.05
-      dude.userData.direction += dude.userData.turningSpeed * 0.01
-      dude.position.x += Math.sin(dude.userData.direction) * (dude.userData.speed * dude.scale.y)
-      dude.position.y += Math.cos(dude.userData.direction) * (dude.userData.speed * dude.scale.y)
-      dude.rotation = -dude.userData.direction + Math.PI
+      dude.scale.y = 0.95 + Math.sin(tick + dude.offset) * 0.05
+      dude.direction += dude.turningSpeed * 0.01
+      dude.position.x += Math.sin(dude.direction) * (dude.speed * dude.scale.y)
+      dude.position.y += Math.cos(dude.direction) * (dude.speed * dude.scale.y)
+      dude.rotation = -dude.direction + Math.PI
 
       // wrap the maggots
       if (dude.position.x < dudeBounds.x) {

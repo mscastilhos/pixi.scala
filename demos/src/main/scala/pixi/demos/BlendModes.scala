@@ -1,10 +1,11 @@
 package pixi.demos
 
 import org.scalajs.dom
-import pixi.core.{Rectangle, Sprite, Container, Renderer}
-import pixi.scalajs.UserData.WithUserData
+import pixi.core.webgl.managers.BlendMode
+import pixi.core.{Container, Rectangle, Renderer, Sprite}
 
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js
+import scala.scalajs.js.annotation.{JSExport, ScalaJSDefined}
 
 @JSExport("BlendModes")
 object BlendModes {
@@ -19,12 +20,17 @@ object BlendModes {
   stage.addChild(background)
 
   // Data associated with the dudes
-  case class DudeData(var direction: Double, var turningSpeed: Double, var speed: Double)
+  @ScalaJSDefined
+  trait DudeData extends js.Object {
+    var direction: Double
+    var turningSpeed: Double
+    var speed: Double
+  }
 
   // create an array to store a reference to the dudes
   val dudeArray = for (i <- 0 until 20) yield {
     // create a new Sprite that uses the image name that we just generated as its source
-    val dude = Sprite.fromImage("_assets/flowerTop.png")
+    val dude = Sprite.fromImage("_assets/flowerTop.png").asInstanceOf[Sprite with DudeData]
 
     dude.anchor.set(0.5)
 
@@ -36,17 +42,17 @@ object BlendModes {
     dude.position.y = Math.floor(Math.random() * renderer.height)
 
     // The important bit of this example, this is how you change the default blend mode of the sprite
-    dude.blendMode = pixi.Consts.BLEND_MODES.ADD
+    dude.blendMode = BlendMode.Add
 
     // create some extra properties that will control movement
-    val data = DudeData(direction = Math.random() * Math.PI * 2,
-      turningSpeed = Math.random() - 0.8,
-      speed = 2 + Math.random() * 2)
+    dude.direction = Math.random() * Math.PI * 2
+    dude.turningSpeed = Math.random() - 0.8
+    dude.speed = 2 + Math.random() * 2
 
     stage.addChild(dude)
 
     // finally return the dude with extra powers into the dudeArray so it it can be easily accessed later
-    dude.withUserData(data)
+    dude
   }
 
   // create a bounding box box for the little dudes
@@ -65,10 +71,10 @@ object BlendModes {
   def animate(d: Double = 0) {
     // iterate through the dudes and update the positions
     for (dude <- dudeArray) {
-      dude.userData.direction += dude.userData.turningSpeed * 0.01
-      dude.position.x += Math.sin(dude.userData.direction) * dude.userData.speed
-      dude.position.y += Math.cos(dude.userData.direction) * dude.userData.speed
-      dude.rotation = -dude.userData.direction - Math.PI / 2
+      dude.direction += dude.turningSpeed * 0.01
+      dude.position.x += Math.sin(dude.direction) * dude.speed
+      dude.position.y += Math.cos(dude.direction) * dude.speed
+      dude.rotation = -dude.direction - Math.PI / 2
 
       // wrap the dudes by testing their bounds...
       if (dude.position.x < dudeBounds.x) {

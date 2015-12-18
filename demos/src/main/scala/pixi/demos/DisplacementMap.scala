@@ -6,12 +6,7 @@ import pixi.filters.DisplacementFilter
 import pixi.interaction.EventData
 
 import scala.scalajs.js
-
-// import this to add user data to JavaScript objects
-
-import pixi.scalajs.UserData.WithUserData
-
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{JSExport, ScalaJSDefined}
 
 @JSExport("DisplacementMap")
 object DisplacementMap {
@@ -27,32 +22,34 @@ object DisplacementMap {
   stage.addChild(container)
 
   // Data for the maggots
-  case class MaggotData(var direction: Double,
-                        var speed: Double,
-                        var turnSpeed: Double,
-                        var original: Point)
+  @ScalaJSDefined
+  trait MaggotData extends js.Object {
+    var direction: Double
+    var speed: Double
+    var turnSpeed: Double
+    var original: Point
+  }
 
   val padding = 100
   val bounds = new Rectangle(-padding, -padding, renderer.width + padding * 2, renderer.height + padding * 2)
   val maggots = for (_ <- 1 to 20) yield {
 
-    val data = MaggotData(
-      direction = Math.random() * Math.PI * 2,
-      speed = 1,
-      turnSpeed = Math.random() - 0.8,
-      null)
 
-    val maggot = Sprite.fromImage("_assets/maggot.png").withUserData(data)
+    val maggot = Sprite.fromImage("_assets/maggot.png").asInstanceOf[Sprite with MaggotData]
     maggot.anchor.set(0.5)
     container.addChild(maggot)
 
+    maggot.direction = Math.random() * Math.PI * 2
+    maggot.speed = 1
+    maggot.turnSpeed = Math.random() - 0.8
 
     maggot.position.x = Math.random() * bounds.width
     maggot.position.y = Math.random() * bounds.height
 
     maggot.scale.set(1 + Math.random() * 0.3)
     val x = maggot.scale.clone()
-    maggot.userData.original = maggot.scale.clone()
+    maggot.original = maggot.scale.clone()
+    // Place the maggot in the list of sprites
     maggot
   }
 
@@ -105,15 +102,14 @@ object DisplacementMap {
     count += 0.05
 
     for (maggot <- maggots) {
-      val maggotData = maggot.userData
 
-      maggotData.direction += maggotData.turnSpeed * 0.01
-      maggot.position.x += Math.sin(maggotData.direction) * maggotData.speed
-      maggot.position.y += Math.cos(maggotData.direction) * maggotData.speed
+      maggot.direction += maggot.turnSpeed * 0.01
+      maggot.position.x += Math.sin(maggot.direction) * maggot.speed
+      maggot.position.y += Math.cos(maggot.direction) * maggot.speed
 
-      maggot.rotation = -maggotData.direction - Math.PI / 2
+      maggot.rotation = -maggot.direction - Math.PI / 2
 
-      maggot.scale.x = maggotData.original.x + Math.sin(count) * 0.2
+      maggot.scale.x = maggot.original.x + Math.sin(count) * 0.2
 
       // wrap the maggots around as the crawl
       if (maggot.position.x < bounds.x) {
