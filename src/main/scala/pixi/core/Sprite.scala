@@ -3,8 +3,8 @@ package pixi.core
 import pixi.core.webgl.filters.Filter
 
 import scala.scalajs.js
+import scala.scalajs.js.Dynamic.{global => g}
 import scala.scalajs.js.annotation.JSName
-import js.Dynamic.{global => g}
 
 
 /** The Sprite object is the base for all textured objects that are rendered to the screen
@@ -33,8 +33,8 @@ Setting the anchor to 1,1 would mean the texture's origin point will be the bott
   /** The tint applied to the sprite. This is a hex value. A value of 0xFFFFFF will remove any tint effect. */
   var tint: Int = js.native
 
-  /** The blend mode to be applied to the sprite. Apply a value of blendModes.NORMAL to reset the blend mode. */
-  var blendMode: Int = js.native
+  /** The blend mode to be applied to the sprite. Apply a value of [[BlendMode.N]] to reset the blend mode. */
+  var blendMode: BlendMode = js.native
 
   /** The shader that will be used to render the sprite. Set to null to remove a current shader. */
   var shader: Filter = js.native
