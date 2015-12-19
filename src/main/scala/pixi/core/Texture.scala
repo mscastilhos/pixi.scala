@@ -2,12 +2,12 @@ package pixi.core
 
 import org.scalajs.dom.html.Canvas
 import org.scalajs.dom.raw.HTMLVideoElement
-import pixi.Consts
+import pixi.ScaleMode
 import pixi.eventemitter3.EventEmitter
 
 import scala.scalajs.js
+import scala.scalajs.js.Dynamic.{global => g}
 import scala.scalajs.js.annotation.JSName
-import js.Dynamic.{global => g}
 
 
 /** A texture stores the information that represents an image or part of an image. It cannot be added
@@ -80,7 +80,7 @@ object Texture {
     * @return The newly created texture
     */
   @inline
-  def fromImage(imageUrl: String, crossorigin: Boolean, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): Texture = {
+  def fromImage(imageUrl: String, crossorigin: Boolean, scaleMode: ScaleMode = ScaleMode.Default): Texture = {
     g.PIXI.Texture.fromImage(imageUrl, crossorigin, scaleMode).asInstanceOf[Texture]
   }
 
@@ -102,7 +102,7 @@ object Texture {
     * @return
     */
   @inline
-  def fromCanvas(canvas: Canvas, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): Texture = {
+  def fromCanvas(canvas: Canvas, scaleMode: ScaleMode = ScaleMode.Default): Texture = {
     g.PIXI.Texture.fromCanvas(canvas, scaleMode).asInstanceOf[Texture]
   }
 
@@ -113,7 +113,7 @@ object Texture {
     * @return A Texture
     */
   @inline
-  def fromVideo(video: HTMLVideoElement, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): Texture = {
+  def fromVideo(video: HTMLVideoElement, scaleMode: ScaleMode = ScaleMode.Default): Texture = {
     g.PIXI.Texture.fromVideo(video, scaleMode).asInstanceOf[Texture]
   }
 
@@ -124,7 +124,7 @@ object Texture {
     * @return A Texture
     */
   @inline
-  def fromVideoUrl(videoUrl: String, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): Texture = {
+  def fromVideoUrl(videoUrl: String, scaleMode: ScaleMode = ScaleMode.Default): Texture = {
     g.PIXI.Texture.fromVideoUrl(videoUrl, scaleMode).asInstanceOf[Texture]
   }
 

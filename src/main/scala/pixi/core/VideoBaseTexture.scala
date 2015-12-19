@@ -1,11 +1,11 @@
 package pixi.core
 
 import org.scalajs.dom.raw.HTMLVideoElement
-import pixi.Consts
+import pixi.ScaleMode
 
 import scala.scalajs.js
+import scala.scalajs.js.Dynamic.{global => g}
 import scala.scalajs.js.annotation.JSName
-import js.Dynamic.{global => g}
 
 /** A texture of a [playing] Video.
   *
@@ -46,7 +46,7 @@ object VideoBaseTexture {
     * @return
     */
   @inline
-  def fromVideo(video: HTMLVideoElement, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): VideoBaseTexture = {
+  def fromVideo(video: HTMLVideoElement, scaleMode: ScaleMode = ScaleMode.Default): VideoBaseTexture = {
     g.PIXI.VideoBaseTexture.fromVideo(video, scaleMode).asInstanceOf[VideoBaseTexture]
   }
 
@@ -58,7 +58,7 @@ object VideoBaseTexture {
     * @return
     */
   @inline
-  def fromUrl(videoSrc: js.Any, scaleMode: Int = Consts.SCALE_MODES.DEFAULT): VideoBaseTexture = {
+  def fromUrl(videoSrc: js.Any, scaleMode: ScaleMode = ScaleMode.Default): VideoBaseTexture = {
     g.PIXI.VideoBaseTexture.fromUrl(videoSrc, scaleMode).asInstanceOf[VideoBaseTexture]
   }
 }

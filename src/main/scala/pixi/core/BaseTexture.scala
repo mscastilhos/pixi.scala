@@ -2,25 +2,25 @@ package pixi.core
 
 import org.scalajs.dom.html.Canvas
 import org.scalajs.dom.raw.HTMLElement
-import pixi.Consts
+import pixi.ScaleMode
 import pixi.eventemitter3.EventEmitter
 
 import scala.scalajs.js
+import scala.scalajs.js.Dynamic.{global => g}
 import scala.scalajs.js.UndefOr
 import scala.scalajs.js.annotation.JSName
-import js.Dynamic.{global => g}
 
 /** A texture stores the information that represents an image. All textures have a base texture. */
 @js.native
 @JSName("PIXI.BaseTexture")
 class BaseTexture protected[pixi]() extends EventEmitter {
   /**
-   * @param source the source object of the texture.
-   * @param scaleMode See { @link SCALE_MODES} for possible values
-   * @param resolution the resolution of the texture for devices with different pixel ratios
-   */
+    * @param source the source object of the texture.
+    * @param scaleMode See { @link SCALE_MODES} for possible values
+    * @param resolution the resolution of the texture for devices with different pixel ratios
+    */
   def this(source: HTMLElement,
-           scaleMode: Int = Consts.SCALE_MODES.DEFAULT,
+           scaleMode: ScaleMode = ScaleMode.Default,
            resolution: Double = 1) = this()
 
   /** The Resolution of the texture. */
@@ -98,14 +98,14 @@ class BaseTexture protected[pixi]() extends EventEmitter {
 
 object BaseTexture {
   /**
-   * Helper function that creates a base texture from the given image url.
-   * If the image is not in the base texture cache it will be created and loaded.
-   *
-   * @param imageUrl The image url of the texture
-   * @param crossorigin Should use anonymous CORS? Defaults to true if the URL is not a data-URI.
-   * @param scaleMode See { @link SCALE_MODES} for possible values
-   * @return BaseTexture
-   */
+    * Helper function that creates a base texture from the given image url.
+    * If the image is not in the base texture cache it will be created and loaded.
+    *
+    * @param imageUrl The image url of the texture
+    * @param crossorigin Should use anonymous CORS? Defaults to true if the URL is not a data-URI.
+    * @param scaleMode See { @link SCALE_MODES} for possible values
+    * @return BaseTexture
+    */
   @inline
   def fromImage(imageUrl: String,
                 crossorigin: UndefOr[Boolean] = js.undefined,
@@ -114,24 +114,24 @@ object BaseTexture {
   }
 
   /**
-   * Helper function that creates a base texture from the given image url.
-   * If the image is not in the base texture cache it will be created and loaded.
-   *
-   * @param imageUrl The image url of the texture
-   * @return BaseTexture
-   */
+    * Helper function that creates a base texture from the given image url.
+    * If the image is not in the base texture cache it will be created and loaded.
+    *
+    * @param imageUrl The image url of the texture
+    * @return BaseTexture
+    */
   @inline
   def fromImage(imageUrl: String): BaseTexture = {
     g.PIXI.BaseTexture.fromImage(imageUrl).asInstanceOf[BaseTexture]
   }
 
   /**
-   * Helper function that creates a base texture from the given canvas element.
-   *
-   * @param canvas The canvas element source of the texture
-   * @param scaleMode See {{#crossLink "PIXI/scaleModes:property"}}scaleModes{{/crossLink}} for possible values
-   * @return BaseTexture
-   */
+    * Helper function that creates a base texture from the given canvas element.
+    *
+    * @param canvas The canvas element source of the texture
+    * @param scaleMode See {{#crossLink "PIXI/scaleModes:property"}}scaleModes{{/crossLink}} for possible values
+    * @return BaseTexture
+    */
   @inline
   def fromCanvas(canvas: Canvas, scaleMode: Int): BaseTexture = {
     g.PIXI.BaseTexture.fromCanvas(canvas, scaleMode).asInstanceOf[BaseTexture]

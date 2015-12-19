@@ -1,11 +1,11 @@
 package pixi.extras
 
-import pixi.Consts
-import pixi.core.{Point, Texture, Sprite}
+import pixi.ScaleMode
+import pixi.core.{Point, Sprite, Texture}
 
 import scala.scalajs.js
+import scala.scalajs.js.Dynamic.{global => g}
 import scala.scalajs.js.annotation.JSName
-import js.Dynamic.{global => g}
 
 /** A tiling sprite is a fast way of rendering a tiling image
   * @constructor
@@ -65,7 +65,7 @@ object TilingSprite {
                 width: Int,
                 height: Int,
                 crossorigin: Boolean,
-                scaleMode: Double = Consts.SCALE_MODES.DEFAULT): TilingSprite = {
+                scaleMode: ScaleMode = ScaleMode.Default): TilingSprite = {
     g.PIXI.extras.TilingSprite.fromImage(imageId, width, height, crossorigin, scaleMode).asInstanceOf[TilingSprite]
   }
 }

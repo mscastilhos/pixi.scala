@@ -2,8 +2,7 @@ package pixi.core
 
 import org.scalajs.dom.html.Image
 import org.scalajs.dom.raw.HTMLCanvasElement
-import pixi.Consts
-import Consts._
+import pixi.ScaleMode
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
@@ -55,7 +54,7 @@ class RenderTexture protected[pixi] extends Texture {
   def this(renderer: Renderer,
            width: Double = 100,
            height: Double = 100,
-           scaleMode: Double = SCALE_MODES.DEFAULT,
+           scaleMode: ScaleMode = ScaleMode.Default,
            resolution: Double = 1) = this()
 
   /** The Resolution of the texture. */

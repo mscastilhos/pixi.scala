@@ -10,6 +10,7 @@ import scala.scalajs.js.annotation.{JSExport, ScalaJSDefined}
 object BlendModes {
   val renderer = Renderer.autoDetect(800, 600)
   dom.document.body.appendChild(renderer.view)
+  dom.console.log(js.Dynamic.global.PIXI.RETINA_PREFIX)
 
   // create the root of the scene graph
   val stage = new Container
