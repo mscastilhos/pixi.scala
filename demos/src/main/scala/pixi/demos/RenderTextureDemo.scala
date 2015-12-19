@@ -1,9 +1,9 @@
 package pixi.demos
 
 import org.scalajs.dom
-import pixi.Consts
-import pixi.core._
+import pixi.ScaleMode
 import pixi.core.Renderer.Options
+import pixi.core._
 
 import scala.scalajs.js.annotation.JSExport
 
@@ -29,7 +29,7 @@ object RenderTextureDemo {
   }
 
 
-  val rt = new RenderTexture(renderer, 300, 200, Consts.SCALE_MODES.LINEAR, 0.1)
+  val rt = new RenderTexture(renderer, 300, 200, ScaleMode.Linear, 0.1)
 
   val sprite = new Sprite(rt)
 
