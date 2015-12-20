@@ -2,7 +2,6 @@ package pixi.core
 
 import org.scalajs.dom.html.Image
 import org.scalajs.dom.raw.HTMLCanvasElement
-import pixi.ScaleMode
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName

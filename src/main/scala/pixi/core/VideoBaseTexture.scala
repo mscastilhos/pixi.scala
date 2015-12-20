@@ -1,7 +1,6 @@
 package pixi.core
 
 import org.scalajs.dom.raw.HTMLVideoElement
-import pixi.ScaleMode
 
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic.{global => g}

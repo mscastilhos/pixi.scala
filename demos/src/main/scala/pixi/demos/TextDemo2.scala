@@ -2,12 +2,12 @@ package pixi.demos
 
 import org.scalajs.dom
 import org.scalajs.dom.html.Script
-import pixi.core.{Text, Sprite, Container, Renderer}
+import pixi.core.{Container, Renderer, Sprite, Text}
 import pixi.extras.BitmapText
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{ScalaJSDefined, JSExport}
 import scala.scalajs.js.Dynamic.{literal => lit}
+import scala.scalajs.js.annotation.{JSExport, ScalaJSDefined}
 
 @JSExport("TextDemo2")
 object TextDemo2 {
@@ -23,14 +23,13 @@ object TextDemo2 {
   }
 
   // Load them google fonts before starting...!
-  dom.window.asInstanceOf[WebFontConfig].WebFontConfig = lit(google = lit(families = js.Array("Snippet", "Arvo:700italic", "Podkova:700")),
-    active = () => init())
+  dom.window.asInstanceOf[WebFontConfig].WebFontConfig = lit(
+    google = lit(
+      families = js.Array("Snippet", "Arvo:700italic", "Podkova:700")),
+    active = init)
 
   // include the web-font loader script
-  loadScript()
-
-  @JSExport
-  def loadScript(): Unit = {
+  locally {
     val wf = dom.document.createElement("script").asInstanceOf[Script]
     wf.src = (if ("https:" == dom.document.location.protocol) "https" else "http") +
       "://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"

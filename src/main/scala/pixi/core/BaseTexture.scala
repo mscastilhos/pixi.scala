@@ -2,7 +2,6 @@ package pixi.core
 
 import org.scalajs.dom.html.Canvas
 import org.scalajs.dom.raw.HTMLElement
-import pixi.ScaleMode
 import pixi.eventemitter3.EventEmitter
 
 import scala.scalajs.js

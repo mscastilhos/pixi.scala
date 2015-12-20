@@ -1,7 +1,6 @@
 package pixi.demos
 
 import org.scalajs.dom
-import pixi.ScaleMode
 import pixi.core.Renderer.Options
 import pixi.core._
 

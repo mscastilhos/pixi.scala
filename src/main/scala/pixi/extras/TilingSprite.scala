@@ -1,7 +1,6 @@
 package pixi.extras
 
-import pixi.ScaleMode
-import pixi.core.{Point, Sprite, Texture}
+import pixi.core.{Point, ScaleMode, Sprite, Texture}
 
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic.{global => g}

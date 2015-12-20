@@ -1,4 +1,4 @@
-package pixi
+package pixi.core
 
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic.{global => g}
